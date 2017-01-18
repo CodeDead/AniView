@@ -4,7 +4,7 @@ GIF Image Viewer
 # About
 Aniview was created by DeadLine. This application is designed to view GIF images on a Windows system. It has and always will be free of charge.
 
-You can find our company on the web here:
+You can find our company on the web here:<br />
 http://codedead.com/
 
 # Requirements
