@@ -11,3 +11,6 @@ http://codedead.com/
 * Syncfusion for WPF (https://www.syncfusion.com/)
 * .NET Framework 4.6.2 (https://www.microsoft.com/en-us/download/details.aspx?id=53344)
 * Visual Studio 2015 or higher (http://visualstudio.com)
+
+# License
+This application is licensed under GPLv3.
