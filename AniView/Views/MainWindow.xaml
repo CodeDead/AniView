@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Views.MainWindow"
+    xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    x:Class="AniView.Views.MainWindow"
         mc:Ignorable="d"
         Title="AniView" WindowStartupLocation="CenterScreen"
     AllowsTransparency="True"
@@ -13,7 +15,10 @@
     syncfusion:SkinStorage.VisualStyle="Metro" Icon="/AniView;component/Resources/Images/aniview.png">
     <DockPanel>
         <Grid DockPanel.Dock="Top">
-            <Image MinHeight="150" x:Name="ImgView" Stretch="None"/>
+            <Image MinHeight="150" x:Name="ImgView" Margin="5" Stretch="None"
+                   gif:AnimationBehavior.Loaded="AnimationBehavior_OnLoaded"
+                   gif:AnimationBehavior.Error="AnimationBehavior_OnError"
+                   gif:AnimationBehavior.DownloadProgress="AnimationBehavior_OnDownloadProgress" />
         </Grid>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
@@ -21,14 +26,14 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Margin="5,0,5,5" Background="Transparent">
-                <Image Width="96" Height="96" Source="/AniView;component/Resources/Images/left.png"></Image>
+            <Button MaxHeight="110" Margin="5,0,5,5" Background="Transparent" Click="BtnLeft_Click">
+                <Image Source="/AniView;component/Resources/Images/left.png"></Image>
             </Button>
-            <Button Grid.Column="1" Margin="5,0,5,5" Background="Transparent">
-                <Image Width="96" Height="96" Source="/AniView;component/Resources/Images/pin.png"></Image>
+            <Button MaxHeight="110" Grid.Column="1" Margin="5,0,5,5" Background="Transparent" Click="BtnPause_Click">
+                <Image x:Name="ImgPause" Source="/AniView;component/Resources/Images/pin.png"></Image>
             </Button>
-            <Button Grid.Column="2" Margin="5,0,5,5" Background="Transparent">
-                <Image Width="96" Height="96" Source="/AniView;component/Resources/Images/right.png"></Image>
+            <Button MaxHeight="110" Grid.Column="2" Margin="5,0,5,5" Background="Transparent" Click="BtnRight_Click">
+                <Image Source="/AniView;component/Resources/Images/right.png"></Image>
             </Button>
         </Grid>
     </DockPanel>
