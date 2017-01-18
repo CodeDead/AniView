@@ -119,7 +119,7 @@ namespace AniView.Views
         {
             if (_animator != null)
             {
-                //sldPosition.Value = _animator.CurrentFrameIndex;
+                SldFrame.Value = _animator.CurrentFrameIndex;
             }
         }
 
@@ -273,9 +273,8 @@ namespace AniView.Views
             {
                 _animator.CurrentFrameChanged += CurrentFrameChanged;
                 _animator.AnimationCompleted += AnimationCompleted;
-                //sldPosition.Value = 0;
-                //sldPosition.Maximum = _animator.FrameCount - 1;
-                //SetPlayPauseEnabled(_animator.IsPaused || _animator.IsComplete);
+                SldFrame.Value = 0;
+                SldFrame.Maximum = _animator.FrameCount - 1;
             }
         }
 
