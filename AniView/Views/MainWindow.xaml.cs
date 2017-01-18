@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 using XamlAnimatedGif;
 using DownloadProgressEventArgs = XamlAnimatedGif.DownloadProgressEventArgs;
 using Path = System.IO.Path;
@@ -29,6 +31,7 @@ namespace AniView.Views
         private bool _isDownloading;
         private int _downloadProgress;
         private bool _isDownloadProgressIndeterminate;
+        private string _currentPath;
 
         public MainWindow()
         {
@@ -67,6 +70,14 @@ namespace AniView.Views
                     _images.Add(s);
                 }
             }
+            for (int i = 0; i < _images.Count; i++)
+            {
+                if (_images[i] == path)
+                {
+                    _current = i;
+                }
+            }
+            _currentPath = path;
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
@@ -274,6 +285,91 @@ namespace AniView.Views
                 IsDownloading = false;
 
             MessageBox.Show($"An error occurred ({e.Kind}): {e.Exception}");
+        }
+
+        private void BtnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog { Filter = "GIF Images (*.gif)|*.gif" };
+
+            if (ofd.ShowDialog(this) == true)
+            {
+                LoadImage(ofd.FileName);
+            }
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown(0);
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (!File.Exists(_currentPath)) return;
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo(_currentPath) { Verb = "edit" };
+                Process.Start(startInfo);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(this, exception.Message, "AniView", MessageBoxButton.OK);
+            }
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("help.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnCodeDead_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("http://codedead.com/");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnLicense_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("gpl.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnExport_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

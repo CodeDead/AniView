@@ -130,6 +130,24 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\about.png" />
+    <Resource Include="Resources\Images\exit.png" />
+    <Resource Include="Resources\Images\help.png" />
+    <Resource Include="Resources\Images\license.png" />
+    <Resource Include="Resources\Images\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\export.png" />
+    <Resource Include="Resources\Images\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\house.png" />
+    <Resource Include="Resources\Images\update.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
