@@ -7,10 +7,10 @@ Aniview was created by DeadLine. This application is designed to view GIF images
 You can find our company on the web here:<br />
 http://codedead.com/
 
-# Requirements for building AniView
+# Requirements for building
 * SyncFusion for WPF (https://www.syncfusion.com/)
 * .NET Framework 4.6.2 (https://www.microsoft.com/en-us/download/details.aspx?id=53344)
-* Visual Studio 2015 or higher (http://visualstudio.com)
+* Visual Studio 2015 Update 3 or higher (http://visualstudio.com)
 
 # License
 This application is licensed under GPLv3.
