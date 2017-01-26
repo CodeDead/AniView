@@ -129,6 +129,8 @@ namespace AniView.Views
                 }
             }
             _currentPath = path;
+
+            Title = "AniView - " + _currentPath;
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
@@ -445,6 +447,20 @@ namespace AniView.Views
             {
                 await ImageExtractor.ExtractFrames(_currentPath, fbd.SelectedPath);
                 MessageBox.Show("All frames have been extracted!", "AniView", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnProperties_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_currentPath.Length == 0) return;
+            if (!File.Exists(_currentPath)) return;
+            try
+            {
+                NativeMethods.ShowFileProperties(_currentPath);
             }
             catch (Exception ex)
             {

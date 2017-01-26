@@ -45,6 +45,12 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Tools">
+                <MenuItem Header="File properties" Click="BtnProperties_OnClick">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/properties.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator></Separator>
                 <MenuItem Header="Settings" Click="BtnSettings_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/settings.png"/>
