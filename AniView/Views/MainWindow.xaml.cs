@@ -365,7 +365,7 @@ namespace AniView.Views
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            new SettingsWindow(this).ShowDialog();
         }
 
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
