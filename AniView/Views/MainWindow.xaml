@@ -1,17 +1,17 @@
 ﻿<syncfusion:ChromelessWindow
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     x:Class="AniView.Views.MainWindow"
-        mc:Ignorable="d"
-        Title="AniView" WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d"
+    Title="AniView" WindowStartupLocation="CenterScreen"
     AllowsTransparency="True"
     TitleTextAlignment="Center"
     SizeToContent="WidthAndHeight"
-    syncfusion:SkinStorage.VisualStyle="Metro" Icon="/AniView;component/Resources/Images/aniview.png">
+    Icon="/AniView;component/Resources/Images/aniview.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>

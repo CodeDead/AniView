@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using AniView.Classes;
 using Microsoft.Win32;
 using XamlAnimatedGif;
 using DownloadProgressEventArgs = XamlAnimatedGif.DownloadProgressEventArgs;
@@ -18,6 +19,7 @@ namespace AniView.Views
     /// </summary>
     public partial class MainWindow
     {
+        #region Variables
         private List<string> _images = new List<string>();
         private int _current;
         private Animator _animator;
@@ -32,11 +34,22 @@ namespace AniView.Views
         private int _downloadProgress;
         private bool _isDownloadProgressIndeterminate;
         private string _currentPath;
+        #endregion
 
         public MainWindow()
         {
             InitializeComponent();
+            ChangeVisualStyle();
+
             LoadArguments();
+        }
+
+        /// <summary>
+        /// Change the visual style of the controls, depending on the settings.
+        /// </summary>
+        internal void ChangeVisualStyle()
+        {
+            StyleManager.ChangeStyle(this);
         }
 
         /// <summary>
@@ -136,7 +149,9 @@ namespace AniView.Views
                 _useDefaultRepeatBehavior = value;
                 OnPropertyChanged("UseDefaultRepeatBehavior");
                 if (value)
+                {
                     RepeatBehavior = default(RepeatBehavior);
+                }
             }
         }
 
@@ -148,7 +163,9 @@ namespace AniView.Views
                 _repeatForever = value;
                 OnPropertyChanged("RepeatForever");
                 if (value)
+                {
                     RepeatBehavior = RepeatBehavior.Forever;
+                }
             }
         }
 
@@ -174,7 +191,9 @@ namespace AniView.Views
                 _useSpecificRepeatCount = value;
                 OnPropertyChanged("UseSpecificRepeatCount");
                 if (value)
+                {
                     RepeatBehavior = new RepeatBehavior(RepeatCount);
+                }
             }
         }
 
@@ -186,7 +205,9 @@ namespace AniView.Views
                 _repeatCount = value;
                 OnPropertyChanged("RepeatCount");
                 if (UseSpecificRepeatCount)
+                {
                     RepeatBehavior = new RepeatBehavior(value);
+                }
             }
         }
 
@@ -281,9 +302,11 @@ namespace AniView.Views
         private void AnimationBehavior_OnError(DependencyObject d, AnimationErrorEventArgs e)
         {
             if (e.Kind == AnimationErrorKind.Loading)
+            {
                 IsDownloading = false;
+            }
 
-            MessageBox.Show($"An error occurred ({e.Kind}): {e.Exception}");
+            MessageBox.Show($"An error occurred ({e.Kind}): {e.Exception}", "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void BtnOpen_Click(object sender, RoutedEventArgs e)
@@ -363,7 +386,7 @@ namespace AniView.Views
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            new AboutWindow().ShowDialog();
         }
 
         private void BtnExport_Click(object sender, RoutedEventArgs e)
