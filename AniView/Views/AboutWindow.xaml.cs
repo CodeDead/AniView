@@ -13,7 +13,7 @@ namespace AniView.Views
         public AboutWindow()
         {
             InitializeComponent();
-
+            //Example
             ChangeVisualStyle();
         }
 
