@@ -61,7 +61,7 @@ namespace AniView.Classes
                 {
                     if (showNoUpdates)
                     {
-                        MessageBox.Show("No updates are currently available", "AniView", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("No updates are currently available.", "AniView", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }

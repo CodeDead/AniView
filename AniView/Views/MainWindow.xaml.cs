@@ -34,14 +34,37 @@ namespace AniView.Views
         private int _downloadProgress;
         private bool _isDownloadProgressIndeterminate;
         private string _currentPath;
+
+        private readonly UpdateManager _updateManager;
         #endregion
 
         public MainWindow()
         {
+            _updateManager = new UpdateManager("http://codedead.com/Software/AniView/update.xml");
+
             InitializeComponent();
             ChangeVisualStyle();
 
             LoadArguments();
+            AutoUpdate();
+        }
+
+        /// <summary>
+        /// Automatically check for updates
+        /// </summary>
+        private void AutoUpdate()
+        {
+            try
+            {
+                if (Properties.Settings.Default.AutoUpdate)
+                {
+                    _updateManager.CheckForUpdate(false, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
@@ -357,7 +380,7 @@ namespace AniView.Views
 
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _updateManager.CheckForUpdate(true, true);
         }
 
         private void BtnCodeDead_Click(object sender, RoutedEventArgs e)
