@@ -4,12 +4,15 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using AniView.Classes;
-using Microsoft.Win32;
 using XamlAnimatedGif;
+using Application = System.Windows.Application;
 using DownloadProgressEventArgs = XamlAnimatedGif.DownloadProgressEventArgs;
+using MessageBox = System.Windows.MessageBox;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using Path = System.IO.Path;
 
 namespace AniView.Views
@@ -33,8 +36,7 @@ namespace AniView.Views
         private bool _isDownloading;
         private int _downloadProgress;
         private bool _isDownloadProgressIndeterminate;
-        private string _currentPath;
-
+        private string _currentPath = "";
         private readonly UpdateManager _updateManager;
         #endregion
 
@@ -432,9 +434,22 @@ namespace AniView.Views
             new AboutWindow().ShowDialog();
         }
 
-        private void BtnExport_Click(object sender, RoutedEventArgs e)
+        private async void BtnExport_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (_currentPath.Length == 0) return;
+            if (!File.Exists(_currentPath)) return;
+
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            try
+            {
+                await ImageExtractor.ExtractFrames(_currentPath, fbd.SelectedPath);
+                MessageBox.Show("All frames have been extracted!", "AniView", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
