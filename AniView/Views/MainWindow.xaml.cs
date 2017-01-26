@@ -176,6 +176,11 @@ namespace AniView.Views
 
         private void AnimationCompleted(object sender, EventArgs e)
         {
+            if (!RepeatForever)
+            {
+                _animator.Pause();
+                ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
+            }
             Completed = true;
         }
 
