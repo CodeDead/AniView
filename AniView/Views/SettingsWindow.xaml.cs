@@ -10,7 +10,7 @@ namespace AniView.Views
     public partial class SettingsWindow
     {
         #region Variables
-        private MainWindow _mainWindow;
+        private readonly MainWindow _mainWindow;
         #endregion
 
         public SettingsWindow(MainWindow mw)
@@ -38,6 +38,7 @@ namespace AniView.Views
             try
             {
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
+                CboRepeat.SelectedIndex = Properties.Settings.Default.RepeatBehaviour;
 
                 CboStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
@@ -58,6 +59,9 @@ namespace AniView.Views
                 Properties.Settings.Default.Save();
 
                 LoadSettings();
+
+                _mainWindow.ChangeVisualStyle();
+                ChangeVisualStyle();
             }
             catch (Exception ex)
             {
@@ -70,6 +74,7 @@ namespace AniView.Views
             try
             {
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
+                Properties.Settings.Default.RepeatBehaviour = CboRepeat.SelectedIndex;
                 Properties.Settings.Default.VisualStyle = CboStyle.Text;
 
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;

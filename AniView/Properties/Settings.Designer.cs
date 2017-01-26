@@ -70,5 +70,17 @@ namespace AniView.Properties {
                 this["AutoUpdate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int RepeatBehaviour {
+            get {
+                return ((int)(this["RepeatBehaviour"]));
+            }
+            set {
+                this["RepeatBehaviour"] = value;
+            }
+        }
     }
 }

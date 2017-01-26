@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     AllowsTransparency="True" TitleTextAlignment="Center"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Views.SettingsWindow"
-    mc:Ignorable="d" Width="300" Height="200"
+    mc:Ignorable="d" Width="300" Height="300"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
@@ -17,9 +17,10 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <CheckBox x:Name="ChbAutoUpdate" Content="Automatically check for updates"></CheckBox>
+            <CheckBox Margin="5" x:Name="ChbAutoUpdate" Content="Automatically check for updates"></CheckBox>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -28,8 +29,15 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Content="Style:"></Label>
-                <ComboBox x:Name="CboStyle" SelectedValuePath="Content" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
+                <Label Margin="5" Content="Repeat behaviour:"></Label>
+                <ComboBox x:Name="CboRepeat" Margin="5" Grid.Row="0" Grid.Column="1">
+                    <ComboBoxItem>Infinite</ComboBoxItem>
+                    <ComboBoxItem>Only once</ComboBoxItem>
+                    <ComboBoxItem>Twice</ComboBoxItem>
+                    <ComboBoxItem>Three times</ComboBoxItem>
+                </ComboBox>
+                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Style:"></Label>
+                <ComboBox Margin="5" x:Name="CboStyle" SelectedValuePath="Content" Grid.Row="1" Grid.Column="1" IsReadOnly="True">
                     <ComboBoxItem>Metro</ComboBoxItem>
                     <ComboBoxItem>Blend</ComboBoxItem>
                     <ComboBoxItem>VS2010</ComboBoxItem>
@@ -45,10 +53,10 @@
                     <ComboBoxItem>SyncOrange</ComboBoxItem>
                     <ComboBoxItem>Transparent</ComboBoxItem>
                 </ComboBox>
-                <Label Grid.Row="1" Grid.Column="0" Content="Metro brush:"></Label>
-                <syncfusion:ColorPicker x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
-                <Label Grid.Row="2" Grid.Column="0" Content="Border thickness:"></Label>
-                <syncfusion:IntegerTextBox x:Name="IntBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="0"></syncfusion:IntegerTextBox>
+                <Label Margin="5" Grid.Row="2" Grid.Column="0" Content="Metro brush:"></Label>
+                <syncfusion:ColorPicker Margin="5" x:Name="CpMetroBrush" Grid.Row="2" Grid.Column="1" />
+                <Label Margin="5"  Grid.Row="3" Grid.Column="0" Content="Border thickness:"></Label>
+                <syncfusion:IntegerTextBox Margin="5" x:Name="IntBorderThickness" Grid.Row="3" Grid.Column="1" MinValue="0"></syncfusion:IntegerTextBox>
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
