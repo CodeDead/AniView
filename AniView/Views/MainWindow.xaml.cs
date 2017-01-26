@@ -118,6 +118,7 @@ namespace AniView.Views
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
+            if (_images.Count == 0) return;
             _current++;
             if (_current > _images.Count - 1)
             {
@@ -128,6 +129,7 @@ namespace AniView.Views
 
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
+            if (_images.Count == 0) return;
             _current--;
             if (_current < 0)
             {
