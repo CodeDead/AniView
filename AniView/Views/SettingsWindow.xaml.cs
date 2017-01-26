@@ -82,6 +82,7 @@ namespace AniView.Views
 
                 Properties.Settings.Default.Save();
 
+                _mainWindow.LoadRepeatBehaviour();
                 _mainWindow.ChangeVisualStyle();
                 ChangeVisualStyle();
             }

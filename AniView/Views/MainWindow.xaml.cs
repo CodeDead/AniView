@@ -44,15 +44,28 @@ namespace AniView.Views
 
             InitializeComponent();
             ChangeVisualStyle();
+            LoadRepeatBehaviour();
 
             LoadArguments();
-            AutoUpdate();
+            LoadSettings();
+        }
+
+        internal void LoadRepeatBehaviour()
+        {
+            try
+            {
+                AnimationBehavior.SetRepeatBehavior(ImgView, Properties.Settings.Default.RepeatBehaviour == 0 ? RepeatBehavior.Forever : new RepeatBehavior(Properties.Settings.Default.RepeatBehaviour));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
-        /// Automatically check for updates
+        /// Load all relevant settings
         /// </summary>
-        private void AutoUpdate()
+        private void LoadSettings()
         {
             try
             {
