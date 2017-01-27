@@ -11,6 +11,7 @@ http://codedead.com/
 * SyncFusion for WPF (https://www.syncfusion.com/)
 * .NET Framework 4.6.2 (https://www.microsoft.com/en-us/download/details.aspx?id=53344)
 * Visual Studio 2015 Update 3 or higher (http://visualstudio.com)
+* XamlAnimatedGif (https://github.com/XamlAnimatedGif/XamlAnimatedGif)
 
 # License
 This application is licensed under GPLv3.
