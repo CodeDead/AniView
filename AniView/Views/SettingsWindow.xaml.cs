@@ -40,6 +40,7 @@ namespace AniView.Views
             {
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
                 ChbFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
+                ChbDragDrop.IsChecked = Properties.Settings.Default.DragDrop;
                 CboRepeat.SelectedIndex = Properties.Settings.Default.RepeatBehaviour;
 
                 if (Properties.Settings.Default.ImageFormat.Equals(ImageFormat.Png))
@@ -94,6 +95,7 @@ namespace AniView.Views
             {
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
                 if (ChbFullScreen.IsChecked != null) Properties.Settings.Default.FullScreen = ChbFullScreen.IsChecked.Value;
+                if (ChbDragDrop.IsChecked != null) Properties.Settings.Default.DragDrop = ChbDragDrop.IsChecked.Value;
                 Properties.Settings.Default.RepeatBehaviour = CboRepeat.SelectedIndex;
 
                 switch (CboFormat.SelectedIndex)
@@ -121,6 +123,7 @@ namespace AniView.Views
 
                 _mainWindow.LoadRepeatBehaviour();
                 _mainWindow.ChangeVisualStyle();
+                _mainWindow.LoadSettings();
                 ChangeVisualStyle();
             }
             catch (Exception ex)

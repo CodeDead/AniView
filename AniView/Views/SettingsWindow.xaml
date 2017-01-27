@@ -23,11 +23,13 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates"></CheckBox>
                         <CheckBox Grid.Row="1" Margin="3" x:Name="ChbFullScreen" Content="Fullscreen image"></CheckBox>
-                        <Grid Grid.Row="2">
+                        <CheckBox Grid.Row="2" Margin="3" x:Name="ChbDragDrop" Content="Allow drag and drop"></CheckBox>
+                        <Grid Grid.Row="3">
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>

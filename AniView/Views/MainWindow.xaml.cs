@@ -11,7 +11,9 @@ using System.Windows.Media.Imaging;
 using AniView.Classes;
 using XamlAnimatedGif;
 using Application = System.Windows.Application;
+using DataFormats = System.Windows.DataFormats;
 using DownloadProgressEventArgs = XamlAnimatedGif.DownloadProgressEventArgs;
+using DragEventArgs = System.Windows.DragEventArgs;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using Path = System.IO.Path;
@@ -50,6 +52,7 @@ namespace AniView.Views
             LoadRepeatBehaviour();
 
             LoadArguments();
+            AutoUpdate();
             LoadSettings();
         }
 
@@ -66,9 +69,9 @@ namespace AniView.Views
         }
 
         /// <summary>
-        /// Load all relevant settings
+        /// Automatically check for updates
         /// </summary>
-        private void LoadSettings()
+        private void AutoUpdate()
         {
             try
             {
@@ -76,7 +79,22 @@ namespace AniView.Views
                 {
                     _updateManager.CheckForUpdate(false, false);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Load all relevant settings
+        /// </summary>
+        internal void LoadSettings()
+        {
+            try
+            {
                 BtnFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
+                GridMain.AllowDrop = Properties.Settings.Default.DragDrop;
             }
             catch (Exception ex)
             {
@@ -110,6 +128,24 @@ namespace AniView.Views
         private void LoadImage(string path)
         {
             if (path == null) return;
+            if (!File.Exists(path)) return;
+
+            try
+            {
+                BitmapImage bitmap = new BitmapImage();
+                FileStream stream = File.OpenRead(path);
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = stream;
+                bitmap.EndInit();
+                stream.Close();
+                stream.Dispose();
+            }
+            catch (NotSupportedException ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             AnimationBehavior.SetSourceUri(ImgView, new Uri(path));
             _images = new List<string>();
@@ -473,6 +509,16 @@ namespace AniView.Views
         private void BtnFullScreen_OnClick(object sender, RoutedEventArgs e)
         {
             ImgView.Stretch = BtnFullScreen.IsChecked ? Stretch.Fill : Stretch.None;
+        }
+
+        private void GridMain_OnDrop(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files == null) return;
+            if (!File.Exists(files[0])) return;
+
+            LoadImage(files[0]);
         }
     }
 }
