@@ -41,7 +41,9 @@
     <ApplicationIcon>aniview.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.Shared.WPF, Version=14.4460.0.20, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.WPF, Version=14.4460.0.20, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows" />
@@ -58,6 +60,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="XamlAnimatedGif, Version=1.1.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XamlAnimatedGif.1.1.6\lib\net45\XamlAnimatedGif.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -127,22 +130,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-	<Resource Include="aniview.ico" />
-	<Resource Include="Resources\Images\left.png" />
+    <Resource Include="aniview.ico" />
+    <Resource Include="Resources\Images\left.png" />
     <Resource Include="Resources\Images\right.png" />
-	<Resource Include="Resources\Images\pin.png" />
+    <Resource Include="Resources\Images\pin.png" />
     <Resource Include="Resources\Images\replay.png" />
-	<Resource Include="Resources\Images\aniview.png" />
-	<Resource Include="Resources\Images\properties.png" />
+    <Resource Include="Resources\Images\aniview.png" />
+    <Resource Include="Resources\Images\properties.png" />
     <Resource Include="Resources\Images\about.png" />
     <Resource Include="Resources\Images\exit.png" />
     <Resource Include="Resources\Images\help.png" />
     <Resource Include="Resources\Images\license.png" />
     <Resource Include="Resources\Images\open.png" />
-	<Resource Include="Resources\Images\export.png" />
+    <Resource Include="Resources\Images\export.png" />
     <Resource Include="Resources\Images\settings.png" />
-	<Resource Include="Resources\Images\edit.png" />
-	<Resource Include="Resources\Images\house.png" />
+    <Resource Include="Resources\Images\edit.png" />
+    <Resource Include="Resources\Images\house.png" />
     <Resource Include="Resources\Images\update.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
