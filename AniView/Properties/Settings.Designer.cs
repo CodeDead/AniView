@@ -82,5 +82,17 @@ namespace AniView.Properties {
                 this["RepeatBehaviour"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Png")]
+        public global::System.Drawing.Imaging.ImageFormat ImageFormat {
+            get {
+                return ((global::System.Drawing.Imaging.ImageFormat)(this["ImageFormat"]));
+            }
+            set {
+                this["ImageFormat"] = value;
+            }
+        }
     }
 }

@@ -445,7 +445,7 @@ namespace AniView.Views
             if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
             try
             {
-                await ImageExtractor.ExtractFrames(_currentPath, fbd.SelectedPath);
+                await ImageExtractor.ExtractFrames(_currentPath, fbd.SelectedPath, Properties.Settings.Default.ImageFormat);
                 MessageBox.Show("All frames have been extracted!", "AniView", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
