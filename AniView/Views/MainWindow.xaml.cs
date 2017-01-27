@@ -394,7 +394,7 @@ namespace AniView.Views
         {
             try
             {
-                Process.Start("help.pdf");
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\help.pdf");
             }
             catch (Exception ex)
             {
@@ -423,7 +423,7 @@ namespace AniView.Views
         {
             try
             {
-                Process.Start("gpl.pdf");
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory + "\\gpl.pdf");
             }
             catch (Exception ex)
             {
