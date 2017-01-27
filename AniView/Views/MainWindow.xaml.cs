@@ -169,6 +169,7 @@ namespace AniView.Views
             _currentPath = path;
 
             Title = "AniView - " + _currentPath;
+            LblSize.Content = new FileInfo(path).Length + " bytes";
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
@@ -381,6 +382,7 @@ namespace AniView.Views
                 _animator.AnimationCompleted += AnimationCompleted;
                 SldFrame.Value = 0;
                 SldFrame.Maximum = _animator.FrameCount - 1;
+                LblDimensions.Content = ImgView.Source.Width + " x " + ImgView.Source.Height;
             }
         }
 

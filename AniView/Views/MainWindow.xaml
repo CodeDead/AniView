@@ -17,6 +17,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="File">
@@ -122,5 +123,10 @@
                 </Button>
             </Grid>
         </Grid>
+        <StatusBar Grid.Row="3">
+            <Label x:Name="LblDimensions"></Label>
+            <Separator></Separator>
+            <Label x:Name="LblSize"></Label>
+        </StatusBar>
     </Grid>
 </syncfusion:ChromelessWindow>
