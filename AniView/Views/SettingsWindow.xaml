@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     AllowsTransparency="True" TitleTextAlignment="Center"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Views.SettingsWindow"
-    mc:Ignorable="d" SizeToContent="WidthAndHeight"
+    mc:Ignorable="d" Width="300" Height="300"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <TabControl>
             <TabItem Header="General">
-                <Grid>
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -22,10 +22,12 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates"></CheckBox>
-                        <Grid Grid.Row="1">
+                        <CheckBox Grid.Row="1" Margin="3" x:Name="ChbFullScreen" Content="Fullscreen image"></CheckBox>
+                        <Grid Grid.Row="2">
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
@@ -53,7 +55,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Theme">
-                <Grid>
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>

@@ -39,6 +39,7 @@ namespace AniView.Views
             try
             {
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
+                ChbFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
                 CboRepeat.SelectedIndex = Properties.Settings.Default.RepeatBehaviour;
 
                 if (Properties.Settings.Default.ImageFormat.Equals(ImageFormat.Png))
@@ -92,6 +93,7 @@ namespace AniView.Views
             try
             {
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
+                if (ChbFullScreen.IsChecked != null) Properties.Settings.Default.FullScreen = ChbFullScreen.IsChecked.Value;
                 Properties.Settings.Default.RepeatBehaviour = CboRepeat.SelectedIndex;
 
                 switch (CboFormat.SelectedIndex)

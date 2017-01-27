@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using AniView.Classes;
@@ -75,6 +76,7 @@ namespace AniView.Views
                 {
                     _updateManager.CheckForUpdate(false, false);
                 }
+                BtnFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
             }
             catch (Exception ex)
             {
@@ -466,6 +468,11 @@ namespace AniView.Views
             {
                 MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void BtnFullScreen_OnClick(object sender, RoutedEventArgs e)
+        {
+            ImgView.Stretch = BtnFullScreen.IsChecked ? Stretch.Fill : Stretch.None;
         }
     }
 }

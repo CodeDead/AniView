@@ -89,6 +89,11 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="BtnFullScreen" IsCheckable="True" Header = "Fullscreen" Click="BtnFullScreen_OnClick" Checked="BtnFullScreen_OnClick" Unchecked="BtnFullScreen_OnClick"/>
+                </ContextMenu>
+            </Grid.ContextMenu>
             <Image x:Name="ImgView" Margin="5" Stretch="None"
                    gif:AnimationBehavior.Loaded="AnimationBehavior_OnLoaded"
                    gif:AnimationBehavior.Error="AnimationBehavior_OnError"
