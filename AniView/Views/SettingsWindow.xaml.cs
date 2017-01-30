@@ -42,6 +42,7 @@ namespace AniView.Views
                 ChbFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
                 ChbDragDrop.IsChecked = Properties.Settings.Default.DragDrop;
                 ChbArrowKeys.IsChecked = Properties.Settings.Default.ArrowKeys;
+                ChbAutoStartAnimation.IsChecked = Properties.Settings.Default.AutoStart;
                 CboRepeat.SelectedIndex = Properties.Settings.Default.RepeatBehaviour;
 
                 if (Properties.Settings.Default.ImageFormat.Equals(ImageFormat.Png))
@@ -99,6 +100,7 @@ namespace AniView.Views
                 if (ChbFullScreen.IsChecked != null) Properties.Settings.Default.FullScreen = ChbFullScreen.IsChecked.Value;
                 if (ChbDragDrop.IsChecked != null) Properties.Settings.Default.DragDrop = ChbDragDrop.IsChecked.Value;
                 if (ChbArrowKeys.IsChecked != null) Properties.Settings.Default.ArrowKeys = ChbArrowKeys.IsChecked.Value;
+                if (ChbAutoStartAnimation.IsChecked != null) Properties.Settings.Default.AutoStart = ChbAutoStartAnimation.IsChecked.Value;
                 Properties.Settings.Default.RepeatBehaviour = CboRepeat.SelectedIndex;
 
                 switch (CboFormat.SelectedIndex)
@@ -124,7 +126,7 @@ namespace AniView.Views
 
                 Properties.Settings.Default.Save();
 
-                _mainWindow.LoadRepeatBehaviour();
+                _mainWindow.LoadAnimationBehaviour();
                 _mainWindow.ChangeVisualStyle();
                 _mainWindow.LoadSettings();
                 ChangeVisualStyle();

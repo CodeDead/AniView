@@ -31,19 +31,19 @@ namespace AniView.Views
         private List<string> _images = new List<string>();
         private int _current;
         private Animator _animator;
-        private bool _useDefaultRepeatBehavior = true;
         private bool _repeatForever;
-        private bool _useSpecificRepeatCount;
-        private int _repeatCount = 3;
         private bool _completed;
         private RepeatBehavior _repeatBehavior;
-        private bool _autoStart = true;
         private bool _isDownloading;
         private int _downloadProgress;
         private bool _isDownloadProgressIndeterminate;
         private string _currentPath = "";
+        private bool _autoStartAnimation;
+
         private readonly UpdateManager _updateManager;
         private bool _arrowKeysEnabled;
+
+        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         public MainWindow()
@@ -52,18 +52,94 @@ namespace AniView.Views
 
             InitializeComponent();
             ChangeVisualStyle();
-            LoadRepeatBehaviour();
+            LoadAnimationBehaviour();
 
             LoadArguments();
             AutoUpdate();
             LoadSettings();
         }
 
-        internal void LoadRepeatBehaviour()
+        #region Properties
+
+        internal bool RepeatForever
+        {
+            get { return _repeatForever; }
+            set
+            {
+                _repeatForever = value;
+                OnPropertyChanged("RepeatForever");
+                if (value)
+                {
+                    RepeatBehavior = RepeatBehavior.Forever;
+                }
+            }
+        }
+
+        internal bool Completed
+        {
+            get { return _completed; }
+            set
+            {
+                _completed = value;
+                OnPropertyChanged("Completed");
+            }
+        }
+
+        internal RepeatBehavior RepeatBehavior
+        {
+            get { return _repeatBehavior; }
+            set
+            {
+                _repeatBehavior = value;
+                OnPropertyChanged("RepeatBehavior");
+                Completed = false;
+            }
+        }
+
+        internal bool IsDownloading
+        {
+            get { return _isDownloading; }
+            set
+            {
+                _isDownloading = value;
+                OnPropertyChanged("IsDownloading");
+            }
+        }
+
+        internal int DownloadProgress
+        {
+            get { return _downloadProgress; }
+            set
+            {
+                _downloadProgress = value;
+                OnPropertyChanged("DownloadProgress");
+            }
+        }
+
+        internal bool IsDownloadProgressIndeterminate
+        {
+            get { return _isDownloadProgressIndeterminate; }
+            set
+            {
+                _isDownloadProgressIndeterminate = value;
+                OnPropertyChanged("IsDownloadProgressIndeterminate");
+            }
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+
+        internal void LoadAnimationBehaviour()
         {
             try
             {
                 AnimationBehavior.SetRepeatBehavior(ImgView, Properties.Settings.Default.RepeatBehaviour == 0 ? RepeatBehavior.Forever : new RepeatBehavior(Properties.Settings.Default.RepeatBehaviour));
+                _autoStartAnimation = Properties.Settings.Default.AutoStart;
+                AnimationBehavior.SetAutoStart(ImgView, _autoStartAnimation);
             }
             catch (Exception ex)
             {
@@ -153,7 +229,7 @@ namespace AniView.Views
 
             AnimationBehavior.SetSourceUri(ImgView, new Uri(path));
             _images = new List<string>();
-            ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/pin.png", UriKind.Relative));
+            ImgPause.Source = _autoStartAnimation ? new BitmapImage(new Uri("/AniView;component/Resources/Images/pin.png", UriKind.Relative)) : new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
             SizeToContent = SizeToContent.WidthAndHeight;
 
             foreach (string s in Directory.GetFiles(Path.GetDirectoryName(path), "*.gif", SearchOption.TopDirectoryOnly))
@@ -181,6 +257,9 @@ namespace AniView.Views
             MoveRight();
         }
 
+        /// <summary>
+        /// Load the image that is located to the left of the current image position
+        /// </summary>
         private void MoveRight()
         {
             if (_images.Count == 0) return;
@@ -192,6 +271,9 @@ namespace AniView.Views
             LoadImage(_images[_current]);
         }
 
+        /// <summary>
+        /// Load the image that is located to the right of the current image position
+        /// </summary>
         private void MoveLeft()
         {
             if (_images.Count == 0) return;
@@ -241,34 +323,6 @@ namespace AniView.Views
             Completed = true;
         }
 
-        public bool UseDefaultRepeatBehavior
-        {
-            get { return _useDefaultRepeatBehavior; }
-            set
-            {
-                _useDefaultRepeatBehavior = value;
-                OnPropertyChanged("UseDefaultRepeatBehavior");
-                if (value)
-                {
-                    RepeatBehavior = default(RepeatBehavior);
-                }
-            }
-        }
-
-        public bool RepeatForever
-        {
-            get { return _repeatForever; }
-            set
-            {
-                _repeatForever = value;
-                OnPropertyChanged("RepeatForever");
-                if (value)
-                {
-                    RepeatBehavior = RepeatBehavior.Forever;
-                }
-            }
-        }
-
         private void AnimationBehavior_OnDownloadProgress(DependencyObject d, DownloadProgressEventArgs e)
         {
             IsDownloading = true;
@@ -281,103 +335,6 @@ namespace AniView.Views
             {
                 IsDownloadProgressIndeterminate = true;
             }
-        }
-
-        public bool UseSpecificRepeatCount
-        {
-            get { return _useSpecificRepeatCount; }
-            set
-            {
-                _useSpecificRepeatCount = value;
-                OnPropertyChanged("UseSpecificRepeatCount");
-                if (value)
-                {
-                    RepeatBehavior = new RepeatBehavior(RepeatCount);
-                }
-            }
-        }
-
-        public int RepeatCount
-        {
-            get { return _repeatCount; }
-            set
-            {
-                _repeatCount = value;
-                OnPropertyChanged("RepeatCount");
-                if (UseSpecificRepeatCount)
-                {
-                    RepeatBehavior = new RepeatBehavior(value);
-                }
-            }
-        }
-
-        public bool Completed
-        {
-            get { return _completed; }
-            set
-            {
-                _completed = value;
-                OnPropertyChanged("Completed");
-            }
-        }
-
-        public RepeatBehavior RepeatBehavior
-        {
-            get { return _repeatBehavior; }
-            set
-            {
-                _repeatBehavior = value;
-                OnPropertyChanged("RepeatBehavior");
-                Completed = false;
-            }
-        }
-
-        public bool AutoStart
-        {
-            get { return _autoStart; }
-            set
-            {
-                _autoStart = value;
-                OnPropertyChanged("AutoStart");
-            }
-        }
-
-        public bool IsDownloading
-        {
-            get { return _isDownloading; }
-            set
-            {
-                _isDownloading = value;
-                OnPropertyChanged("IsDownloading");
-            }
-        }
-
-        public int DownloadProgress
-        {
-            get { return _downloadProgress; }
-            set
-            {
-                _downloadProgress = value;
-                OnPropertyChanged("DownloadProgress");
-            }
-        }
-
-        public bool IsDownloadProgressIndeterminate
-        {
-            get { return _isDownloadProgressIndeterminate; }
-            set
-            {
-                _isDownloadProgressIndeterminate = value;
-                OnPropertyChanged("IsDownloadProgressIndeterminate");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void AnimationBehavior_OnLoaded(object sender, RoutedEventArgs e)

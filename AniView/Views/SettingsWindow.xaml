@@ -25,13 +25,15 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates"></CheckBox>
                         <CheckBox Grid.Row="1" Margin="3" x:Name="ChbFullScreen" Content="Fullscreen image"></CheckBox>
                         <CheckBox Grid.Row="2" Margin="3" x:Name="ChbDragDrop" Content="Allow drag and drop"></CheckBox>
                         <CheckBox Grid.Row="3" Margin="3" x:Name="ChbArrowKeys" Content="Allow arrow key input"></CheckBox>
-                        <Grid Grid.Row="4">
+                        <CheckBox Grid.Row="4" Margin="3" x:Name="ChbAutoStartAnimation" Content="Automatically start animation"></CheckBox>
+                        <Grid Grid.Row="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
