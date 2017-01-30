@@ -70,7 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\AnimationHelper.cs" />
     <Compile Include="Classes\ImageExtractor.cs" />
     <Compile Include="Classes\NativeMethods.cs" />
     <Compile Include="Classes\StyleManager.cs" />
