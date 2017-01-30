@@ -118,5 +118,17 @@ namespace AniView.Properties {
                 this["DragDrop"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ArrowKeys {
+            get {
+                return ((bool)(this["ArrowKeys"]));
+            }
+            set {
+                this["ArrowKeys"] = value;
+            }
+        }
     }
 }

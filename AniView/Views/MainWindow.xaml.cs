@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
@@ -14,6 +15,7 @@ using Application = System.Windows.Application;
 using DataFormats = System.Windows.DataFormats;
 using DownloadProgressEventArgs = XamlAnimatedGif.DownloadProgressEventArgs;
 using DragEventArgs = System.Windows.DragEventArgs;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using Path = System.IO.Path;
@@ -41,6 +43,7 @@ namespace AniView.Views
         private bool _isDownloadProgressIndeterminate;
         private string _currentPath = "";
         private readonly UpdateManager _updateManager;
+        private bool _arrowKeysEnabled;
         #endregion
 
         public MainWindow()
@@ -95,6 +98,7 @@ namespace AniView.Views
             {
                 BtnFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
                 GridMain.AllowDrop = Properties.Settings.Default.DragDrop;
+                _arrowKeysEnabled = Properties.Settings.Default.ArrowKeys;
             }
             catch (Exception ex)
             {
@@ -133,13 +137,13 @@ namespace AniView.Views
             try
             {
                 BitmapImage bitmap = new BitmapImage();
-                FileStream stream = File.OpenRead(path);
-                bitmap.BeginInit();
-                bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                bitmap.StreamSource = stream;
-                bitmap.EndInit();
-                stream.Close();
-                stream.Dispose();
+                using (FileStream stream = File.OpenRead(path))
+                {
+                    bitmap.BeginInit();
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.StreamSource = stream;
+                    bitmap.EndInit();
+                }
             }
             catch (NotSupportedException ex)
             {
@@ -174,6 +178,11 @@ namespace AniView.Views
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
+            MoveRight();
+        }
+
+        private void MoveRight()
+        {
             if (_images.Count == 0) return;
             _current++;
             if (_current > _images.Count - 1)
@@ -183,7 +192,7 @@ namespace AniView.Views
             LoadImage(_images[_current]);
         }
 
-        private void BtnLeft_Click(object sender, RoutedEventArgs e)
+        private void MoveLeft()
         {
             if (_images.Count == 0) return;
             _current--;
@@ -192,6 +201,11 @@ namespace AniView.Views
                 _current = _images.Count - 1;
             }
             LoadImage(_images[_current]);
+        }
+
+        private void BtnLeft_Click(object sender, RoutedEventArgs e)
+        {
+            MoveLeft();
         }
 
         private void BtnPause_Click(object sender, RoutedEventArgs e)
@@ -521,6 +535,24 @@ namespace AniView.Views
             if (!File.Exists(files[0])) return;
 
             LoadImage(files[0]);
+        }
+
+        private void GridMain_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (!_arrowKeysEnabled) return;
+            if (e.Key == Key.Left)
+            {
+                MoveLeft();
+            }
+            if (e.Key == Key.Right)
+            {
+                MoveRight();
+            }
+        }
+
+        private void GridMain_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            GridMain.Focus();
         }
     }
 }

@@ -12,7 +12,7 @@
     TitleTextAlignment="Center"
     SizeToContent="WidthAndHeight"
     Icon="/AniView;component/Resources/Images/aniview.png">
-    <Grid x:Name="GridMain" Drop="GridMain_OnDrop">
+    <Grid x:Name="GridMain" Focusable="True" Loaded="GridMain_OnLoaded" Drop="GridMain_OnDrop" KeyDown="GridMain_OnKeyDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
