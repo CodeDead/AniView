@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing.Imaging;
 using System.Windows;
+using System.Windows.Controls;
 using AniView.Classes;
 
 namespace AniView.Views
@@ -39,11 +40,20 @@ namespace AniView.Views
             try
             {
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
+                ChbAutoStartAnimation.IsChecked = Properties.Settings.Default.AutoStart;
                 ChbFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
                 ChbDragDrop.IsChecked = Properties.Settings.Default.DragDrop;
                 ChbArrowKeys.IsChecked = Properties.Settings.Default.ArrowKeys;
-                ChbAutoStartAnimation.IsChecked = Properties.Settings.Default.AutoStart;
-                CboRepeat.SelectedIndex = Properties.Settings.Default.RepeatBehaviour;
+
+                if (Properties.Settings.Default.RepeatBehaviour > 3)
+                {
+                    CboRepeat.SelectedIndex = 4;
+                    TxtCustomRepeat.Value = Properties.Settings.Default.RepeatBehaviour;
+                }
+                else
+                {
+                    CboRepeat.SelectedIndex = Properties.Settings.Default.RepeatBehaviour;
+                }
 
                 if (Properties.Settings.Default.ImageFormat.Equals(ImageFormat.Png))
                 {
@@ -101,11 +111,19 @@ namespace AniView.Views
             try
             {
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
+                if (ChbAutoStartAnimation.IsChecked != null) Properties.Settings.Default.AutoStart = ChbAutoStartAnimation.IsChecked.Value;
                 if (ChbFullScreen.IsChecked != null) Properties.Settings.Default.FullScreen = ChbFullScreen.IsChecked.Value;
                 if (ChbDragDrop.IsChecked != null) Properties.Settings.Default.DragDrop = ChbDragDrop.IsChecked.Value;
                 if (ChbArrowKeys.IsChecked != null) Properties.Settings.Default.ArrowKeys = ChbArrowKeys.IsChecked.Value;
-                if (ChbAutoStartAnimation.IsChecked != null) Properties.Settings.Default.AutoStart = ChbAutoStartAnimation.IsChecked.Value;
-                Properties.Settings.Default.RepeatBehaviour = CboRepeat.SelectedIndex;
+
+                if (CboRepeat.SelectedIndex == 4)
+                {
+                    if (TxtCustomRepeat.Value != null) Properties.Settings.Default.RepeatBehaviour = (int) TxtCustomRepeat.Value;
+                }
+                else
+                {
+                    Properties.Settings.Default.RepeatBehaviour = CboRepeat.SelectedIndex;
+                }
 
                 switch (CboFormat.SelectedIndex)
                 {
@@ -142,6 +160,11 @@ namespace AniView.Views
             {
                 MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void CboRepeat_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TxtCustomRepeat.IsEnabled = ((ComboBox) sender).SelectedIndex == 4;
         }
     }
 }

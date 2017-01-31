@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     AllowsTransparency="True" TitleTextAlignment="Center"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Views.SettingsWindow"
-    mc:Ignorable="d" Width="300" Height="300"
+    mc:Ignorable="d" Width="350" Height="350"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -29,12 +29,13 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates"></CheckBox>
-                        <CheckBox Grid.Row="1" Margin="3" x:Name="ChbFullScreen" Content="Fullscreen image"></CheckBox>
-                        <CheckBox Grid.Row="2" Margin="3" x:Name="ChbDragDrop" Content="Allow drag and drop"></CheckBox>
-                        <CheckBox Grid.Row="3" Margin="3" x:Name="ChbArrowKeys" Content="Allow arrow key input"></CheckBox>
-                        <CheckBox Grid.Row="4" Margin="3" x:Name="ChbAutoStartAnimation" Content="Automatically start animation"></CheckBox>
+                        <CheckBox Grid.Row="1" Margin="3" x:Name="ChbAutoStartAnimation" Content="Automatically start animation"></CheckBox>
+                        <CheckBox Grid.Row="2" Margin="3" x:Name="ChbFullScreen" Content="Fullscreen image"></CheckBox>
+                        <CheckBox Grid.Row="3" Margin="3" x:Name="ChbDragDrop" Content="Allow drag and drop"></CheckBox>
+                        <CheckBox Grid.Row="4" Margin="3" x:Name="ChbArrowKeys" Content="Allow arrow key input"></CheckBox>
                         <Grid Grid.Row="5">
                             <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
@@ -43,14 +44,17 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Label Margin="3" Content="Repeat behaviour:"></Label>
-                            <ComboBox x:Name="CboRepeat" Margin="3" Grid.Row="0" Grid.Column="1">
+                            <ComboBox x:Name="CboRepeat" Margin="3" Grid.Row="0" Grid.Column="1" SelectionChanged="CboRepeat_OnSelectionChanged">
                                 <ComboBoxItem>Infinite</ComboBoxItem>
                                 <ComboBoxItem>Only once</ComboBoxItem>
                                 <ComboBoxItem>Twice</ComboBoxItem>
                                 <ComboBoxItem>Three times</ComboBoxItem>
+                                <ComboBoxItem>Custom</ComboBoxItem>
                             </ComboBox>
-                            <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Frame format:"></Label>
-                            <ComboBox x:Name="CboFormat" Margin="3" Grid.Row="1" Grid.Column="1">
+                            <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Custom repeat behaviour:"></Label>
+                            <syncfusion:IntegerTextBox Margin="3" x:Name="TxtCustomRepeat" Grid.Row="1" Grid.Column="1" MinValue="1" IsEnabled="False" />
+                            <Label Margin="3" Grid.Row="2" Grid.Column="0" Content="Frame format:"></Label>
+                            <ComboBox x:Name="CboFormat" Margin="3" Grid.Row="2" Grid.Column="1">
                                 <ComboBoxItem>PNG</ComboBoxItem>
                                 <ComboBoxItem>BMP</ComboBoxItem>
                                 <ComboBoxItem>JPEG</ComboBoxItem>
