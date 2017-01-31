@@ -41,6 +41,7 @@ namespace AniView.Views
             {
                 ChbAutoUpdate.IsChecked = Properties.Settings.Default.AutoUpdate;
                 ChbAutoStartAnimation.IsChecked = Properties.Settings.Default.AutoStart;
+                ChbAutoSizeWindow.IsChecked = Properties.Settings.Default.AutoSizeWindow;
                 ChbFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
                 ChbDragDrop.IsChecked = Properties.Settings.Default.DragDrop;
                 ChbArrowKeys.IsChecked = Properties.Settings.Default.ArrowKeys;
@@ -112,6 +113,7 @@ namespace AniView.Views
             {
                 if (ChbAutoUpdate.IsChecked != null) Properties.Settings.Default.AutoUpdate = ChbAutoUpdate.IsChecked.Value;
                 if (ChbAutoStartAnimation.IsChecked != null) Properties.Settings.Default.AutoStart = ChbAutoStartAnimation.IsChecked.Value;
+                if (ChbAutoSizeWindow.IsChecked != null) Properties.Settings.Default.AutoSizeWindow = ChbAutoSizeWindow.IsChecked.Value;
                 if (ChbFullScreen.IsChecked != null) Properties.Settings.Default.FullScreen = ChbFullScreen.IsChecked.Value;
                 if (ChbDragDrop.IsChecked != null) Properties.Settings.Default.DragDrop = ChbDragDrop.IsChecked.Value;
                 if (ChbArrowKeys.IsChecked != null) Properties.Settings.Default.ArrowKeys = ChbArrowKeys.IsChecked.Value;

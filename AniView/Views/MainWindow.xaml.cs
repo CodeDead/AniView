@@ -42,6 +42,7 @@ namespace AniView.Views
 
         private readonly UpdateManager _updateManager;
         private bool _arrowKeysEnabled;
+        private bool _autoSizeWindow;
 
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
@@ -175,6 +176,7 @@ namespace AniView.Views
                 BtnFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
                 GridMain.AllowDrop = Properties.Settings.Default.DragDrop;
                 _arrowKeysEnabled = Properties.Settings.Default.ArrowKeys;
+                _autoSizeWindow = Properties.Settings.Default.AutoSizeWindow;
             }
             catch (Exception ex)
             {
@@ -230,6 +232,10 @@ namespace AniView.Views
             AnimationBehavior.SetSourceUri(ImgView, new Uri(path));
             _images = new List<string>();
             ImgPause.Source = _autoStartAnimation ? new BitmapImage(new Uri("/AniView;component/Resources/Images/pin.png", UriKind.Relative)) : new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
+            if (_autoSizeWindow)
+            {
+                SizeToContent = SizeToContent.WidthAndHeight;
+            }
 
             foreach (string s in Directory.GetFiles(Path.GetDirectoryName(path), "*.gif", SearchOption.TopDirectoryOnly))
             {
