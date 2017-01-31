@@ -230,7 +230,6 @@ namespace AniView.Views
             AnimationBehavior.SetSourceUri(ImgView, new Uri(path));
             _images = new List<string>();
             ImgPause.Source = _autoStartAnimation ? new BitmapImage(new Uri("/AniView;component/Resources/Images/pin.png", UriKind.Relative)) : new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
-            SizeToContent = SizeToContent.WidthAndHeight;
 
             foreach (string s in Directory.GetFiles(Path.GetDirectoryName(path), "*.gif", SearchOption.TopDirectoryOnly))
             {
@@ -250,6 +249,22 @@ namespace AniView.Views
 
             Title = "AniView - " + _currentPath;
             LblSize.Content = new FileInfo(path).Length + " bytes";
+        }
+
+        /// <summary>
+        /// Unload the current image and reset all variables to their default values
+        /// </summary>
+        private void UnloadImage()
+        {
+            AnimationBehavior.SetSourceUri(ImgView, null);
+            _animator = null;
+            _currentPath = "";
+            _current = 0;
+            _images = new List<string>();
+            Title = "AniView";
+            LblSize.Content = "";
+            LblDimensions.Content = "";
+            SldFrame.Value = 0;
         }
 
         private void BtnRight_Click(object sender, RoutedEventArgs e)
@@ -510,6 +525,11 @@ namespace AniView.Views
         private void GridMain_OnLoaded(object sender, RoutedEventArgs e)
         {
             GridMain.Focus();
+        }
+
+        private void BtnClose_OnClick(object sender, RoutedEventArgs e)
+        {
+            UnloadImage();
         }
     }
 }
