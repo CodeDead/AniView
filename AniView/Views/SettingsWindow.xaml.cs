@@ -61,6 +61,10 @@ namespace AniView.Views
                 {
                     CboFormat.SelectedIndex = 3;
                 }
+                else if (Properties.Settings.Default.ImageFormat.Equals(ImageFormat.Gif))
+                {
+                    CboFormat.SelectedIndex = 4;
+                }
 
                 CboStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
@@ -116,6 +120,9 @@ namespace AniView.Views
                         break;
                     case 3:
                         Properties.Settings.Default.ImageFormat = ImageFormat.Tiff;
+                        break;
+                    case 4:
+                        Properties.Settings.Default.ImageFormat = ImageFormat.Gif;
                         break;
                 }
 

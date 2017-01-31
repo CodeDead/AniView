@@ -55,6 +55,7 @@
                                 <ComboBoxItem>BMP</ComboBoxItem>
                                 <ComboBoxItem>JPEG</ComboBoxItem>
                                 <ComboBoxItem>TIFF</ComboBoxItem>
+                                <ComboBoxItem>GIF</ComboBoxItem>
                             </ComboBox>
                         </Grid>
                     </Grid>
