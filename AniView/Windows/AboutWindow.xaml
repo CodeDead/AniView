@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Views.AboutWindow"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.AboutWindow"
     mc:Ignorable="d" AllowsTransparency="True" Width="350" Height="250" TitleTextAlignment="Center"
     Title="AniView - About" WindowStartupLocation="CenterScreen" Icon="/AniView;component/aniview.ico">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -23,7 +23,7 @@ AniView was created by DeadLine.<LineBreak></LineBreak>
 Images: small-n-flat by paomedia<LineBreak></LineBreak>
 Theme: SyncFusion<LineBreak></LineBreak>
 Gif control: XamlAnimatedGif<LineBreak></LineBreak>
-Version: 1.1.0.0<LineBreak></LineBreak>
+Version: 1.2.0.0<LineBreak></LineBreak>
 <LineBreak></LineBreak>
 Copyright © CodeDead 2017
             </TextBlock>

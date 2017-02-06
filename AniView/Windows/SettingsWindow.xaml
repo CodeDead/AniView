@@ -4,8 +4,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     AllowsTransparency="True" TitleTextAlignment="Center"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Views.SettingsWindow"
-    mc:Ignorable="d" Width="350" Height="350"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.SettingsWindow"
+    mc:Ignorable="d" Width="400" Height="400"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,6 +27,7 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <CheckBox Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates"></CheckBox>
@@ -35,7 +36,8 @@
                         <CheckBox Grid.Row="3" Margin="3" x:Name="ChbFullScreen" Content="Full screen image"></CheckBox>
                         <CheckBox Grid.Row="4" Margin="3" x:Name="ChbDragDrop" Content="Allow drag and drop"></CheckBox>
                         <CheckBox Grid.Row="5" Margin="3" x:Name="ChbArrowKeys" Content="Allow arrow key input"></CheckBox>
-                        <Grid Grid.Row="6">
+                        <CheckBox Grid.Row="6" Margin="3" x:Name="ChbFileTitle" Content="Show file name in title"></CheckBox>
+                        <Grid Grid.Row="7">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>

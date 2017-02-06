@@ -154,5 +154,17 @@ namespace AniView.Properties {
                 this["AutoSizeWindow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowFileTitle {
+            get {
+                return ((bool)(this["ShowFileTitle"]));
+            }
+            set {
+                this["ShowFileTitle"] = value;
+            }
+        }
     }
 }

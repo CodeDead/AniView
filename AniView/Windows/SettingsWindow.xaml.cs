@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using AniView.Classes;
 
-namespace AniView.Views
+namespace AniView.Windows
 {
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
@@ -12,10 +12,10 @@ namespace AniView.Views
     public partial class SettingsWindow
     {
         #region Variables
-        private readonly MainWindow _mainWindow;
+        private readonly Windows.MainWindow _mainWindow;
         #endregion
 
-        public SettingsWindow(MainWindow mw)
+        public SettingsWindow(Windows.MainWindow mw)
         {
             _mainWindow = mw;
             InitializeComponent();
@@ -45,6 +45,7 @@ namespace AniView.Views
                 ChbFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
                 ChbDragDrop.IsChecked = Properties.Settings.Default.DragDrop;
                 ChbArrowKeys.IsChecked = Properties.Settings.Default.ArrowKeys;
+                ChbFileTitle.IsChecked = Properties.Settings.Default.ShowFileTitle;
 
                 if (Properties.Settings.Default.RepeatBehaviour > 3)
                 {
@@ -117,6 +118,7 @@ namespace AniView.Views
                 if (ChbFullScreen.IsChecked != null) Properties.Settings.Default.FullScreen = ChbFullScreen.IsChecked.Value;
                 if (ChbDragDrop.IsChecked != null) Properties.Settings.Default.DragDrop = ChbDragDrop.IsChecked.Value;
                 if (ChbArrowKeys.IsChecked != null) Properties.Settings.Default.ArrowKeys = ChbArrowKeys.IsChecked.Value;
+                if (ChbFileTitle.IsChecked != null) Properties.Settings.Default.ShowFileTitle = ChbFileTitle.IsChecked.Value;
 
                 if (CboRepeat.SelectedIndex == 4)
                 {

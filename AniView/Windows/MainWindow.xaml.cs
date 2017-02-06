@@ -20,14 +20,14 @@ using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using Path = System.IO.Path;
 
-namespace AniView.Views
+namespace AniView.Windows
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow
     {
-        #region Variables
+        #region Local Variables
         private List<string> _images = new List<string>();
         private int _current;
         private Animator _animator;
@@ -38,13 +38,15 @@ namespace AniView.Views
         private int _downloadProgress;
         private bool _isDownloadProgressIndeterminate;
         private string _currentPath = "";
-        private bool _autoStartAnimation;
-
         private readonly UpdateManager _updateManager;
+        public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region Setting Variables
+        private bool _showFileTitle;
         private bool _arrowKeysEnabled;
         private bool _autoSizeWindow;
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        private bool _autoStartAnimation;
         #endregion
 
         public MainWindow()
@@ -177,6 +179,7 @@ namespace AniView.Views
                 GridMain.AllowDrop = Properties.Settings.Default.DragDrop;
                 _arrowKeysEnabled = Properties.Settings.Default.ArrowKeys;
                 _autoSizeWindow = Properties.Settings.Default.AutoSizeWindow;
+                _showFileTitle = Properties.Settings.Default.ShowFileTitle;
             }
             catch (Exception ex)
             {
@@ -253,7 +256,12 @@ namespace AniView.Views
             }
             _currentPath = path;
 
-            Title = "AniView - " + _currentPath;
+            Title = "AniView";
+            if (_showFileTitle)
+            {
+                Title += " - " + _currentPath;
+            }
+
             LblSize.Content = new FileInfo(path).Length + " bytes";
         }
 

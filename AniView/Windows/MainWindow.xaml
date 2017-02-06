@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-    x:Class="AniView.Views.MainWindow"
+    x:Class="AniView.Windows.MainWindow"
     mc:Ignorable="d"
     Title="AniView" WindowStartupLocation="CenterScreen"
     AllowsTransparency="True"
