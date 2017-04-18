@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.AboutWindow"
     mc:Ignorable="d" AllowsTransparency="True" Width="350" Height="250" TitleTextAlignment="Center"
+    UseLayoutRounding="True"
     Title="AniView - About" WindowStartupLocation="CenterScreen" Icon="/AniView;component/aniview.ico">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
@@ -15,9 +16,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Image Width="64" Height="64" Source="/AniView;component/aniview.ico" Stretch="None"></Image>
-            <TextBlock Grid.Column="1">
+            <Separator Margin="5" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <TextBlock Grid.Column="2">
 AniView was created by DeadLine.<LineBreak></LineBreak>
 <LineBreak></LineBreak>
 Images: small-n-flat by paomedia<LineBreak></LineBreak>

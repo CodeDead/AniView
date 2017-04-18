@@ -12,10 +12,10 @@ namespace AniView.Windows
     public partial class SettingsWindow
     {
         #region Variables
-        private readonly Windows.MainWindow _mainWindow;
+        private readonly MainWindow _mainWindow;
         #endregion
 
-        public SettingsWindow(Windows.MainWindow mw)
+        public SettingsWindow(MainWindow mw)
         {
             _mainWindow = mw;
             InitializeComponent();
