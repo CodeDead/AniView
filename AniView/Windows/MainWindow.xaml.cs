@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -38,7 +39,7 @@ namespace AniView.Windows
         private int _downloadProgress;
         private bool _isDownloadProgressIndeterminate;
         private string _currentPath = "";
-        private readonly UpdateManager _updateManager;
+        private readonly UpdateManager.UpdateManager _updateManager;
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
@@ -51,7 +52,7 @@ namespace AniView.Windows
 
         public MainWindow()
         {
-            _updateManager = new UpdateManager("http://codedead.com/Software/AniView/update.xml");
+            _updateManager = new UpdateManager.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "http://codedead.com/Software/AniView/update.xml", "AniView");
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -240,11 +241,15 @@ namespace AniView.Windows
                 SizeToContent = SizeToContent.WidthAndHeight;
             }
 
-            foreach (string s in Directory.GetFiles(Path.GetDirectoryName(path), "*.gif", SearchOption.TopDirectoryOnly))
+            string pathName = Path.GetDirectoryName(path);
+            if (pathName != null)
             {
-                if (!_images.Contains(s))
+                foreach (string s in Directory.GetFiles(pathName, "*.gif", SearchOption.TopDirectoryOnly))
                 {
-                    _images.Add(s);
+                    if (!_images.Contains(s))
+                    {
+                        _images.Add(s);
+                    }
                 }
             }
             for (int i = 0; i < _images.Count; i++)

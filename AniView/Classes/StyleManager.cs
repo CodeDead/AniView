@@ -26,7 +26,7 @@ namespace AniView.Classes
             catch (Exception ex)
             {
                 SkinStorage.SetVisualStyle(o, "Metro");
-                MessageBox.Show(ex.Message, "Advanced PortChecker", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

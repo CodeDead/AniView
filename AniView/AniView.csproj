@@ -57,6 +57,9 @@
     </Reference>
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
+    <Reference Include="UpdateManager">
+      <HintPath>..\..\UpdateManager\UpdateManager\bin\Release\UpdateManager.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -74,8 +77,6 @@
     <Compile Include="Classes\ImageExtractor.cs" />
     <Compile Include="Classes\NativeMethods.cs" />
     <Compile Include="Classes\StyleManager.cs" />
-    <Compile Include="Classes\Update.cs" />
-    <Compile Include="Classes\UpdateManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
