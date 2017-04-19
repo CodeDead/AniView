@@ -137,6 +137,9 @@ namespace AniView.Windows
         }
         #endregion
 
+        /// <summary>
+        /// Load the animation behaviour for XamlAnimatedGif
+        /// </summary>
         internal void LoadAnimationBehaviour()
         {
             try
@@ -216,6 +219,11 @@ namespace AniView.Windows
             if (path == null) return;
             if (!File.Exists(path)) return;
 
+            PgbLoading.Visibility = Visibility.Visible;
+            ImgView.Visibility = Visibility.Collapsed;
+            SldFrame.Value = 0;
+            SldFrame.Maximum = 100;
+
             try
             {
                 BitmapImage bitmap = new BitmapImage();
@@ -276,6 +284,7 @@ namespace AniView.Windows
         private void UnloadImage()
         {
             AnimationBehavior.SetSourceUri(ImgView, null);
+            ImgView.Visibility = Visibility.Collapsed;
             _animator = null;
             _currentPath = "";
             _current = 0;
@@ -341,7 +350,7 @@ namespace AniView.Windows
 
         private void CurrentFrameChanged(object sender, EventArgs e)
         {
-            if (_animator != null)
+            if (_animator != null && PgbLoading.Visibility == Visibility.Collapsed)
             {
                 SldFrame.Value = _animator.CurrentFrameIndex;
             }
@@ -373,6 +382,9 @@ namespace AniView.Windows
 
         private void AnimationBehavior_OnLoaded(object sender, RoutedEventArgs e)
         {
+            PgbLoading.Visibility = Visibility.Collapsed;
+            ImgView.Visibility = Visibility.Visible;
+
             if (_animator != null)
             {
                 _animator.CurrentFrameChanged -= CurrentFrameChanged;
@@ -393,6 +405,9 @@ namespace AniView.Windows
 
         private void AnimationBehavior_OnError(DependencyObject d, AnimationErrorEventArgs e)
         {
+            PgbLoading.Visibility = Visibility.Collapsed;
+            ImgView.Visibility = Visibility.Collapsed;
+
             if (e.Kind == AnimationErrorKind.Loading)
             {
                 IsDownloading = false;

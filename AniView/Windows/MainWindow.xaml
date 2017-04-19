@@ -103,10 +103,15 @@
                     <MenuItem x:Name="BtnFullScreen" IsCheckable="True" Header = "Full screen" Click="BtnFullScreen_OnClick" Checked="BtnFullScreen_OnClick" Unchecked="BtnFullScreen_OnClick"/>
                 </ContextMenu>
             </Grid.ContextMenu>
-            <Image x:Name="ImgView" Margin="5" Stretch="None"
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Visibility="Collapsed" x:Name="ImgView" Margin="5" Stretch="None"
                    gif:AnimationBehavior.Loaded="AnimationBehavior_OnLoaded"
                    gif:AnimationBehavior.Error="AnimationBehavior_OnError"
                    gif:AnimationBehavior.DownloadProgress="AnimationBehavior_OnDownloadProgress" />
+            <ProgressBar Grid.Row="1" Margin="5" x:Name="PgbLoading" MinHeight="25" Visibility="Collapsed" IsIndeterminate="True" Value="1"></ProgressBar>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
