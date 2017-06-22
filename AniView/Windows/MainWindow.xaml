@@ -126,13 +126,13 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button Margin="5" Background="Transparent" Click="BtnLeft_Click" FocusVisualStyle="{x:Null}">
-                    <Image MaxHeight="96" MaxWidth="96" Source="/AniView;component/Resources/Images/left.png"></Image>
+                    <Image MaxHeight="64" MaxWidth="64" Source="/AniView;component/Resources/Images/left.png"></Image>
                 </Button>
                 <Button Margin="5" Grid.Column="1" Background="Transparent" Click="BtnPause_Click" FocusVisualStyle="{x:Null}">
-                    <Image MaxHeight="96" MaxWidth="96" x:Name="ImgPause" Source="/AniView;component/Resources/Images/pin.png"></Image>
+                    <Image MaxHeight="64" MaxWidth="64" x:Name="ImgPause" Source="/AniView;component/Resources/Images/pin.png"></Image>
                 </Button>
                 <Button Margin="5" Grid.Column="2" Background="Transparent" Click="BtnRight_Click" FocusVisualStyle="{x:Null}">
-                    <Image MaxHeight="96" MaxWidth="96" Source="/AniView;component/Resources/Images/right.png"></Image>
+                    <Image MaxHeight="64" MaxWidth="64" Source="/AniView;component/Resources/Images/right.png"></Image>
                 </Button>
             </Grid>
         </Grid>
