@@ -90,6 +90,11 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
+                <MenuItem Header="Donate" Click="BtnDonate_Click">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/money.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem Header="About" Click="BtnAbout_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/about.png"/>

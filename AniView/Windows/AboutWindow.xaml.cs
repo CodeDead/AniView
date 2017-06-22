@@ -45,7 +45,7 @@ namespace AniView.Windows
         {
             try
             {
-                Process.Start("http://codedead.com/");
+                Process.Start("https://codedead.com/");
             }
             catch (Exception ex)
             {

@@ -64,7 +64,6 @@ namespace AniView.Windows
         }
 
         #region Properties
-
         internal bool RepeatForever
         {
             get => _repeatForever;
@@ -471,7 +470,7 @@ namespace AniView.Windows
         {
             try
             {
-                Process.Start("http://codedead.com/");
+                Process.Start("https://codedead.com/");
             }
             catch (Exception ex)
             {
@@ -564,6 +563,18 @@ namespace AniView.Windows
         private void BtnClose_OnClick(object sender, RoutedEventArgs e)
         {
             UnloadImage();
+        }
+
+        private void BtnDonate_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("https://codedead.com/?page_id=302");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
