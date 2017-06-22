@@ -52,7 +52,7 @@ namespace AniView.Windows
 
         public MainWindow()
         {
-            _updateManager = new UpdateManager.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "http://codedead.com/Software/AniView/update.xml", "AniView");
+            _updateManager = new UpdateManager.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView");
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -67,7 +67,7 @@ namespace AniView.Windows
 
         internal bool RepeatForever
         {
-            get { return _repeatForever; }
+            get => _repeatForever;
             set
             {
                 _repeatForever = value;
@@ -81,7 +81,7 @@ namespace AniView.Windows
 
         internal bool Completed
         {
-            get { return _completed; }
+            get => _completed;
             set
             {
                 _completed = value;
@@ -91,7 +91,7 @@ namespace AniView.Windows
 
         internal RepeatBehavior RepeatBehavior
         {
-            get { return _repeatBehavior; }
+            get => _repeatBehavior;
             set
             {
                 _repeatBehavior = value;
@@ -102,7 +102,7 @@ namespace AniView.Windows
 
         internal bool IsDownloading
         {
-            get { return _isDownloading; }
+            get => _isDownloading;
             set
             {
                 _isDownloading = value;
@@ -112,7 +112,7 @@ namespace AniView.Windows
 
         internal int DownloadProgress
         {
-            get { return _downloadProgress; }
+            get => _downloadProgress;
             set
             {
                 _downloadProgress = value;
@@ -122,7 +122,7 @@ namespace AniView.Windows
 
         internal bool IsDownloadProgressIndeterminate
         {
-            get { return _isDownloadProgressIndeterminate; }
+            get => _isDownloadProgressIndeterminate;
             set
             {
                 _isDownloadProgressIndeterminate = value;
