@@ -12,8 +12,9 @@
     AllowsTransparency="True"
     TitleTextAlignment="Center"
     SizeToContent="WidthAndHeight"
+    Drop="GridMain_OnDrop" KeyDown="GridMain_OnKeyDown"
     Icon="/AniView;component/Resources/Images/aniview.png">
-    <Grid x:Name="GridMain" Focusable="True" Loaded="GridMain_OnLoaded" Drop="GridMain_OnDrop" KeyDown="GridMain_OnKeyDown">
+    <Grid x:Name="GridMain" Focusable="True" Loaded="GridMain_OnLoaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
