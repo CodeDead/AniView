@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AniView.Classes
 {
+    /// <summary>
+    /// This class contains methods and functions to manipulate an image
+    /// </summary>
     internal static class ImageExtractor
     {
         /// <summary>
@@ -69,7 +72,7 @@ namespace AniView.Classes
             for (int i = 0; i < numberOfFrames; i++)
             {
                 originalImg.SelectActiveFrame(FrameDimension.Time, i);
-                frames[i] = ((Image)originalImg.Clone());
+                frames[i] = (Image)originalImg.Clone();
             }
             return frames;
         }

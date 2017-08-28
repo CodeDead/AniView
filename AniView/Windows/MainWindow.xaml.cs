@@ -23,33 +23,86 @@ using Path = System.IO.Path;
 
 namespace AniView.Windows
 {
+    /// <inheritdoc cref="Syncfusion.Windows.Shared.ChromelessWindow" />
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow
     {
         #region Local Variables
+        /// <summary>
+        /// A list of obtained paths that lead to displayable images
+        /// </summary>
         private List<string> _images = new List<string>();
+        /// <summary>
+        /// The index of the currently selected image in the image list
+        /// </summary>
         private int _current;
+        /// <summary>
+        /// The animation behaviour for the XamlAnimatedGif control
+        /// </summary>
         private Animator _animator;
+        /// <summary>
+        /// A boolean to indicate whether or not the image playlist should be repeated indefinitely
+        /// </summary>
         private bool _repeatForever;
+        /// <summary>
+        /// A boolean to indicate whether the operation has been completed
+        /// </summary>
         private bool _completed;
+        /// <summary>
+        /// The repeat behaviour for the XamlAnimatedGif control
+        /// </summary>
         private RepeatBehavior _repeatBehavior;
+        /// <summary>
+        /// A boolean to indicate whether a download is in progress or not
+        /// </summary>
         private bool _isDownloading;
+        /// <summary>
+        /// An integer to indicate the current download progress
+        /// </summary>
         private int _downloadProgress;
+        /// <summary>
+        /// A boolean to indicate whether the download progress is indeterminate or not
+        /// </summary>
         private bool _isDownloadProgressIndeterminate;
+        /// <summary>
+        /// The path of the image that is currently being displayed
+        /// </summary>
         private string _currentPath = "";
+        /// <summary>
+        /// The UpdateManager that will indicate whether an application update is available or not
+        /// </summary>
         private readonly UpdateManager.UpdateManager _updateManager;
-        public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// The Property changed event handler for the XamlAnimatedGif control
+        /// </summary>
+        internal event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region Setting Variables
+        /// <summary>
+        /// A boolean to indicate whether the file path should be displayed in the title of the window
+        /// </summary>
         private bool _showFileTitle;
+        /// <summary>
+        /// A boolean to indicate whether or not navigating AniView with arrow keys is enabled
+        /// </summary>
         private bool _arrowKeysEnabled;
+        /// <summary>
+        /// A boolean to indicate whether the window should automatically resize itself
+        /// </summary>
         private bool _autoSizeWindow;
+        /// <summary>
+        /// A boolean to indicate whether the animation behaviour should start automatically
+        /// </summary>
         private bool _autoStartAnimation;
         #endregion
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Initialize a new MainWindow object
+        /// </summary>
         public MainWindow()
         {
             _updateManager = new UpdateManager.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView");
@@ -64,6 +117,9 @@ namespace AniView.Windows
         }
 
         #region Properties
+        /// <summary>
+        /// A property to indicate whether the image playlist should be repeated indefinitely
+        /// </summary>
         internal bool RepeatForever
         {
             get => _repeatForever;
@@ -78,6 +134,9 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// A property to indicate whether the operation has completed or not
+        /// </summary>
         internal bool Completed
         {
             get => _completed;
@@ -88,6 +147,9 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// A property that indicates the current repeat behaviour
+        /// </summary>
         internal RepeatBehavior RepeatBehavior
         {
             get => _repeatBehavior;
@@ -99,6 +161,9 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// A property to indicate whether a download operation is currently being executed or not
+        /// </summary>
         internal bool IsDownloading
         {
             get => _isDownloading;
@@ -109,6 +174,9 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// A property to indicate the current download progress
+        /// </summary>
         internal int DownloadProgress
         {
             get => _downloadProgress;
@@ -119,6 +187,9 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// A property to indicate whether the download progress is indeterminate or not
+        /// </summary>
         internal bool IsDownloadProgressIndeterminate
         {
             get => _isDownloadProgressIndeterminate;
@@ -129,6 +200,10 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// This method will be called when a property has changed
+        /// </summary>
+        /// <param name="propertyName">The name of the property that has changed</param>
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -191,7 +266,7 @@ namespace AniView.Windows
         }
 
         /// <summary>
-        /// Change the visual style of the controls, depending on the settings.
+        /// Change the visual style of an object, depending on the settings.
         /// </summary>
         internal void ChangeVisualStyle()
         {
@@ -211,7 +286,7 @@ namespace AniView.Windows
         }
 
         /// <summary>
-        /// Load the path of all GIF images into a list and determine the current position
+        /// Load the path of all GIF images into a list and determine the position of the current image in the list
         /// </summary>
         private void LoadImage(string path)
         {
@@ -294,6 +369,11 @@ namespace AniView.Windows
             SldFrame.Value = 0;
         }
 
+        /// <summary>
+        /// Open the next image
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnRight_Click(object sender, RoutedEventArgs e)
         {
             MoveRight();
@@ -327,11 +407,21 @@ namespace AniView.Windows
             LoadImage(_images[_current]);
         }
 
+        /// <summary>
+        /// Open the previous image
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnLeft_Click(object sender, RoutedEventArgs e)
         {
             MoveLeft();
         }
 
+        /// <summary>
+        /// Pause the current image
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnPause_Click(object sender, RoutedEventArgs e)
         {
             if (_animator == null) return;
@@ -347,6 +437,11 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// This method will be called when the current frame of the image has changed
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The event arguments</param>
         private void CurrentFrameChanged(object sender, EventArgs e)
         {
             if (_animator != null && PgbLoading.Visibility == Visibility.Collapsed)
@@ -355,6 +450,11 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// This method will be called when the animation of the image has completed
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The event arguments</param>
         private void AnimationCompleted(object sender, EventArgs e)
         {
             if (!RepeatForever)
@@ -365,6 +465,11 @@ namespace AniView.Windows
             Completed = true;
         }
 
+        /// <summary>
+        /// This method will be called when the progress of a download operation has changed
+        /// </summary>
+        /// <param name="d">The dependency object</param>
+        /// <param name="e">The download progress event arguments</param>
         private void AnimationBehavior_OnDownloadProgress(DependencyObject d, DownloadProgressEventArgs e)
         {
             IsDownloading = true;
@@ -379,6 +484,11 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// This method will be called when the animation behaviour has loaded
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void AnimationBehavior_OnLoaded(object sender, RoutedEventArgs e)
         {
             PgbLoading.Visibility = Visibility.Collapsed;
@@ -392,16 +502,19 @@ namespace AniView.Windows
 
             _animator = AnimationBehavior.GetAnimator(ImgView);
 
-            if (_animator != null)
-            {
-                _animator.CurrentFrameChanged += CurrentFrameChanged;
-                _animator.AnimationCompleted += AnimationCompleted;
-                SldFrame.Value = 0;
-                SldFrame.Maximum = _animator.FrameCount - 1;
-                LblDimensions.Content = ImgView.Source.Width + " x " + ImgView.Source.Height;
-            }
+            if (_animator == null) return;
+            _animator.CurrentFrameChanged += CurrentFrameChanged;
+            _animator.AnimationCompleted += AnimationCompleted;
+            SldFrame.Value = 0;
+            SldFrame.Maximum = _animator.FrameCount - 1;
+            LblDimensions.Content = ImgView.Source.Width + " x " + ImgView.Source.Height;
         }
 
+        /// <summary>
+        /// This method will be called when an error occurs within the animation behaviour
+        /// </summary>
+        /// <param name="d">The dependency object</param>
+        /// <param name="e">The animation error event arguments</param>
         private void AnimationBehavior_OnError(DependencyObject d, AnimationErrorEventArgs e)
         {
             PgbLoading.Visibility = Visibility.Collapsed;
@@ -415,6 +528,11 @@ namespace AniView.Windows
             MessageBox.Show($"An error occurred ({e.Kind}): {e.Exception}", "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        /// <summary>
+        /// Open an image
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog { Filter = "GIF Images (*.gif)|*.gif" };
@@ -425,11 +543,21 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Exit the application
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0);
         }
 
+        /// <summary>
+        /// Edit an image using the default image editor
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             if (!File.Exists(_currentPath)) return;
@@ -444,11 +572,21 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Open a new SettingsWindow
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
             new SettingsWindow(this).ShowDialog();
         }
 
+        /// <summary>
+        /// Open the help documentation, if applicable
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -461,11 +599,21 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Check for application updates
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             _updateManager.CheckForUpdate(true, true);
         }
 
+        /// <summary>
+        /// Open the CodeDead website
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnCodeDead_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -478,6 +626,11 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Open the file containing the license for AniView
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnLicense_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -490,11 +643,21 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Open a new AboutWindow
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
             new AboutWindow().ShowDialog();
         }
 
+        /// <summary>
+        /// Export an image and all of its frames
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private async void BtnExport_Click(object sender, RoutedEventArgs e)
         {
             if (_currentPath.Length == 0) return;
@@ -513,6 +676,11 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Open the properties of a file using the default file properties window
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnProperties_OnClick(object sender, RoutedEventArgs e)
         {
             if (_currentPath.Length == 0) return;
@@ -527,11 +695,21 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Enable or disable the stretching of an image
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnFullScreen_OnClick(object sender, RoutedEventArgs e)
         {
             ImgView.Stretch = BtnFullScreen.IsChecked ? Stretch.Fill : Stretch.None;
         }
 
+        /// <summary>
+        /// Allow drag and drop of an image on the MainWindow
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The drag event arguments</param>
         private void GridMain_OnDrop(object sender, DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
@@ -542,6 +720,11 @@ namespace AniView.Windows
             LoadImage(files[0]);
         }
 
+        /// <summary>
+        /// Open the previous or next image if arrow key navigation is enabled
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The key event arguments</param>
         private void GridMain_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (!_arrowKeysEnabled) return;
@@ -555,16 +738,31 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Method that will be called when the GridMain object has loaded
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void GridMain_OnLoaded(object sender, RoutedEventArgs e)
         {
             GridMain.Focus();
         }
 
+        /// <summary>
+        /// Close an image
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnClose_OnClick(object sender, RoutedEventArgs e)
         {
             UnloadImage();
         }
 
+        /// <summary>
+        /// Open the donation page
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnDonate_Click(object sender, RoutedEventArgs e)
         {
             try

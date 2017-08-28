@@ -3,11 +3,22 @@ using System.Runtime.InteropServices;
 
 namespace AniView.Classes
 {
+    /// <summary>
+    /// This class contains external native methods
+    /// </summary>
     internal class NativeMethods
     {
+        /// <summary>
+        /// Performs an operation on a specified file
+        /// </summary>
+        /// <param name="lpExecInfo">A pointer to a SHELLEXECUTEINFO structure that contains and receives information about the application being executed</param>
+        /// <returns>eturns TRUE if successful; otherwise, FALSE</returns>
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
         private static extern bool ShellExecuteEx(ref Shellexecuteinfo lpExecInfo);
 
+        /// <summary>
+        /// Contains information used by ShellExecuteEx
+        /// </summary>
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         private struct Shellexecuteinfo
         {
@@ -38,7 +49,6 @@ namespace AniView.Classes
         /// Show the properties dialog of a file
         /// </summary>
         /// <param name="path">The path of the file</param>
-        /// <returns></returns>
         internal static void ShowFileProperties(string path)
         {
             Shellexecuteinfo info = new Shellexecuteinfo();

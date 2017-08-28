@@ -6,15 +6,24 @@ using AniView.Classes;
 
 namespace AniView.Windows
 {
+    /// <inheritdoc cref="Syncfusion.Windows.Shared.ChromelessWindow" />
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
     /// </summary>
     public partial class SettingsWindow
     {
         #region Variables
+        /// <summary>
+        /// The main window
+        /// </summary>
         private readonly MainWindow _mainWindow;
         #endregion
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Initialize a new SettingsWindow object
+        /// </summary>
+        /// <param name="mw">The main window of AniView</param>
         public SettingsWindow(MainWindow mw)
         {
             _mainWindow = mw;
@@ -88,6 +97,11 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Reset all settings
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnReset_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -108,6 +122,11 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// Save the currently selected settings
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The routed event arguments</param>
         private void BtnSave_OnClick(object sender, RoutedEventArgs e)
         {
             try
@@ -131,7 +150,7 @@ namespace AniView.Windows
 
                 switch (CboFormat.SelectedIndex)
                 {
-                    case 0:
+                    default:
                         Properties.Settings.Default.ImageFormat = ImageFormat.Png;
                         break;
                     case 1:
@@ -166,6 +185,11 @@ namespace AniView.Windows
             }
         }
 
+        /// <summary>
+        /// This method will be called when the selection of CboRepeat has changed
+        /// </summary>
+        /// <param name="sender">The object that has initialized the method</param>
+        /// <param name="e">The selection changed event arguments</param>
         private void CboRepeat_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TxtCustomRepeat.IsEnabled = ((ComboBox) sender).SelectedIndex == 4;

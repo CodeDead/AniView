@@ -112,8 +112,8 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Margin="5" MinHeight="25" x:Name="BtnReset" Content="Reset" Click="BtnReset_OnClick"></Button>
-                <Button Grid.Column="1" MinHeight="25" Margin="5" x:Name="BtnSave" Content="Save" Click="BtnSave_OnClick"></Button>
+                <Button Margin="5" MinHeight="20" x:Name="BtnReset" Content="Reset" Click="BtnReset_OnClick"></Button>
+                <Button Grid.Column="1" MinHeight="20" Margin="5" x:Name="BtnSave" Content="Save" Click="BtnSave_OnClick"></Button>
             </Grid>
         </Grid>
     </Grid>
