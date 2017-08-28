@@ -133,7 +133,6 @@
     <Resource Include="aniview.ico" />
     <Resource Include="Resources\Images\left.png" />
     <Resource Include="Resources\Images\right.png" />
-    <Resource Include="Resources\Images\pin.png" />
     <Resource Include="Resources\Images\replay.png" />
     <Resource Include="Resources\Images\aniview.png" />
     <Resource Include="Resources\Images\properties.png" />
@@ -153,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\pause.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

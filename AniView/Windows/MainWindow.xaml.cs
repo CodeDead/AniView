@@ -317,7 +317,7 @@ namespace AniView.Windows
 
             AnimationBehavior.SetSourceUri(ImgView, new Uri(path));
             _images = new List<string>();
-            ImgPause.Source = _autoStartAnimation ? new BitmapImage(new Uri("/AniView;component/Resources/Images/pin.png", UriKind.Relative)) : new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
+            ImgPause.Source = _autoStartAnimation ? new BitmapImage(new Uri("/AniView;component/Resources/Images/pause.png", UriKind.Relative)) : new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
             if (_autoSizeWindow)
             {
                 SizeToContent = SizeToContent.WidthAndHeight;
@@ -428,7 +428,7 @@ namespace AniView.Windows
             if (_animator.IsPaused)
             {
                 _animator.Play();
-                ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/pin.png", UriKind.Relative));
+                ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/pause.png", UriKind.Relative));
             }
             else
             {
