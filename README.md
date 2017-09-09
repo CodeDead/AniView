@@ -9,7 +9,7 @@ http://codedead.com/
 
 # Requirements for building
 * [Syncfusion for WPF](https://www.syncfusion.com/)
-* .NET Framework 4.7
+* [.NET Framework 4.7](https://www.microsoft.com/en-us/download/details.aspx?id=55170)
 * [Visual Studio](http://visualstudio.com)
 * [XamlAnimatedGif](https://github.com/XamlAnimatedGif/XamlAnimatedGif)
 
