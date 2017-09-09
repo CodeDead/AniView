@@ -731,10 +731,12 @@ namespace AniView.Windows
             if (e.Key == Key.Left)
             {
                 MoveLeft();
+                e.Handled = true;
             }
-            if (e.Key == Key.Right)
+            else if (e.Key == Key.Right)
             {
                 MoveRight();
+                e.Handled = true;
             }
         }
 
