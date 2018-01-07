@@ -28,7 +28,7 @@ Theme: Syncfusion<LineBreak></LineBreak>
 Gif control: XamlAnimatedGif<LineBreak></LineBreak>
 Version: 1.4.0.0<LineBreak></LineBreak>
 <LineBreak></LineBreak>
-Copyright © CodeDead 2017
+Copyright © CodeDead 2018
             </TextBlock>
         </Grid>
         <Grid Grid.Row="1">
