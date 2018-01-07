@@ -107,6 +107,12 @@
             <Grid.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="BtnFullScreen" IsCheckable="True" Header = "Full screen" Click="BtnFullScreen_OnClick" Checked="BtnFullScreen_OnClick" Unchecked="BtnFullScreen_OnClick"/>
+                    <Separator></Separator>
+                    <MenuItem Header="Export all frames" Click="BtnExport_Click">
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/export.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </ContextMenu>
             </Grid.ContextMenu>
             <Grid.RowDefinitions>

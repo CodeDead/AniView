@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CodeDead")]
 [assembly: AssemblyProduct("AniView")]
-[assembly: AssemblyCopyright("Copyright © CodeDead 2017")]
+[assembly: AssemblyCopyright("Copyright © CodeDead 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
