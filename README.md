@@ -5,7 +5,7 @@ GIF Image Viewer
 This application is designed to view GIF images on a Windows system. It has and always will be free of charge.
 
 You can find our company on the web here:<br />
-http://codedead.com/
+https://codedead.com/
 
 # Requirements for building
 * [Syncfusion for WPF](https://www.syncfusion.com/)
