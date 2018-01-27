@@ -13,8 +13,12 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl>
-            <TabItem Header="General">
+        <syncfusion:TabControlExt>
+            <syncfusion:TabItemExt
+                Header="General"
+                Image="../Resources/Images/settings.png"
+                ImageWidth="16"
+                ImageHeight="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -39,8 +43,12 @@
                         <CheckBox Grid.Row="6" Margin="3" x:Name="ChbFileTitle" Content="Show file name in title"></CheckBox>
                     </Grid>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Image">
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt
+                Header="Image"
+                Image="../Resources/Images/aniview.png"
+                ImageWidth="16"
+                ImageHeight="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -70,8 +78,12 @@
                         <ComboBoxItem>GIF</ComboBoxItem>
                     </ComboBox>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Theme">
+            </syncfusion:TabItemExt>
+            <syncfusion:TabItemExt 
+                Header="Theme"
+                Image="../Resources/Images/house.png"
+                ImageWidth="16"
+                ImageHeight="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -104,8 +116,8 @@
                     <Label Margin="3"  Grid.Row="2" Grid.Column="0" Content="Border thickness:"></Label>
                     <syncfusion:IntegerTextBox Margin="3" x:Name="IntBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="0"></syncfusion:IntegerTextBox>
                 </Grid>
-            </TabItem>
-        </TabControl>
+            </syncfusion:TabItemExt>
+        </syncfusion:TabControlExt>
         <Grid Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>

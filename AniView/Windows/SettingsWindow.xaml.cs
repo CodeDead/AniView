@@ -112,8 +112,10 @@ namespace AniView.Windows
 
                 LoadSettings();
 
-                _mainWindow.LoadSettings();
+                _mainWindow.LoadAnimationBehaviour();
                 _mainWindow.ChangeVisualStyle();
+                _mainWindow.LoadSettings();
+
                 ChangeVisualStyle();
             }
             catch (Exception ex)
@@ -177,6 +179,7 @@ namespace AniView.Windows
                 _mainWindow.LoadAnimationBehaviour();
                 _mainWindow.ChangeVisualStyle();
                 _mainWindow.LoadSettings();
+
                 ChangeVisualStyle();
             }
             catch (Exception ex)
