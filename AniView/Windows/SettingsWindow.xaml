@@ -13,10 +13,14 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <syncfusion:TabControlExt>
+        <syncfusion:TabControlExt
+            CloseButtonType="Hide"
+            EnableLabelEdit="False"
+            AllowDragDrop="False"
+            DefaultContextMenuItemVisibility="Hidden">
             <syncfusion:TabItemExt
                 Header="General"
-                Image="../Resources/Images/settings.png"
+                Image="../Resources/Images/settings_tab.png"
                 ImageWidth="16"
                 ImageHeight="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -46,7 +50,7 @@
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt
                 Header="Image"
-                Image="../Resources/Images/aniview.png"
+                Image="../Resources/Images/aniview_tab.png"
                 ImageWidth="16"
                 ImageHeight="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -81,7 +85,7 @@
             </syncfusion:TabItemExt>
             <syncfusion:TabItemExt 
                 Header="Theme"
-                Image="../Resources/Images/house.png"
+                Image="../Resources/Images/house_tab.png"
                 ImageWidth="16"
                 ImageHeight="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
