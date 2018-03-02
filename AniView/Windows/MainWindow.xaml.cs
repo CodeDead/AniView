@@ -73,7 +73,7 @@ namespace AniView.Windows
         /// <summary>
         /// The UpdateManager that will indicate whether an application update is available or not
         /// </summary>
-        private readonly UpdateManager.UpdateManager _updateManager;
+        private readonly UpdateManager.Classes.UpdateManager _updateManager;
         /// <summary>
         /// The Property changed event handler for the XamlAnimatedGif control
         /// </summary>
@@ -105,7 +105,7 @@ namespace AniView.Windows
         /// </summary>
         public MainWindow()
         {
-            _updateManager = new UpdateManager.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView");
+            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView", "Information", "Cancel", "Download", "No new version is currently available.");
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -258,10 +258,32 @@ namespace AniView.Windows
                 _arrowKeysEnabled = Properties.Settings.Default.ArrowKeys;
                 _autoSizeWindow = Properties.Settings.Default.AutoSizeWindow;
                 _showFileTitle = Properties.Settings.Default.ShowFileTitle;
+
+                if (Properties.Settings.Default.WindowDragging)
+                {
+                    MouseDown += OnMouseDown;
+                }
+                else
+                {
+                    MouseDown -= OnMouseDown;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Method that is called when the Window should be dragged
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The MouseButtonEventArgs</param>
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
             }
         }
 

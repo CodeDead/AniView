@@ -166,5 +166,17 @@ namespace AniView.Properties {
                 this["ShowFileTitle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WindowDragging {
+            get {
+                return ((bool)(this["WindowDragging"]));
+            }
+            set {
+                this["WindowDragging"] = value;
+            }
+        }
     }
 }

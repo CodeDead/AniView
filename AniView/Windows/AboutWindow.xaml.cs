@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Input;
 using AniView.Classes;
 
 namespace AniView.Windows
@@ -19,6 +20,42 @@ namespace AniView.Windows
         {
             InitializeComponent();
             ChangeVisualStyle();
+            LoadProperties();
+        }
+
+        /// <summary>
+        /// Load all relevant settings
+        /// </summary>
+        private void LoadProperties()
+        {
+            try
+            {
+                if (Properties.Settings.Default.WindowDragging)
+                {
+                    MouseDown += OnMouseDown;
+                }
+                else
+                {
+                    MouseDown -= OnMouseDown;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "MemPlus", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Method that is called when the Window should be dragged
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The MouseButtonEventArgs</param>
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
 
         /// <summary>

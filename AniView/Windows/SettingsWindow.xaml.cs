@@ -2,6 +2,7 @@
 using System.Drawing.Imaging;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using AniView.Classes;
 
 namespace AniView.Windows
@@ -87,6 +88,17 @@ namespace AniView.Windows
                     CboFormat.SelectedIndex = 4;
                 }
 
+                if (Properties.Settings.Default.WindowDragging)
+                {
+                    ChbWindowDragging.IsChecked = true;
+                    MouseDown += OnMouseDown;
+                }
+                else
+                {
+                    ChbWindowDragging.IsChecked = false;
+                    MouseDown -= OnMouseDown;
+                }
+
                 CboStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
                 IntBorderThickness.Value = Properties.Settings.Default.BorderThickness;
@@ -94,6 +106,19 @@ namespace AniView.Windows
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Method that is called when the Window should be dragged
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The MouseButtonEventArgs</param>
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
             }
         }
 
@@ -140,6 +165,7 @@ namespace AniView.Windows
                 if (ChbDragDrop.IsChecked != null) Properties.Settings.Default.DragDrop = ChbDragDrop.IsChecked.Value;
                 if (ChbArrowKeys.IsChecked != null) Properties.Settings.Default.ArrowKeys = ChbArrowKeys.IsChecked.Value;
                 if (ChbFileTitle.IsChecked != null) Properties.Settings.Default.ShowFileTitle = ChbFileTitle.IsChecked.Value;
+                if (ChbWindowDragging.IsChecked != null) Properties.Settings.Default.WindowDragging = ChbWindowDragging.IsChecked.Value;
 
                 if (CboRepeat.SelectedIndex == 4)
                 {
@@ -176,6 +202,7 @@ namespace AniView.Windows
 
                 Properties.Settings.Default.Save();
 
+                LoadSettings();
                 _mainWindow.LoadAnimationBehaviour();
                 _mainWindow.ChangeVisualStyle();
                 _mainWindow.LoadSettings();
