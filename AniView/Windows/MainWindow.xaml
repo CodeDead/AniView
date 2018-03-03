@@ -28,7 +28,6 @@
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/open.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <Separator></Separator>
                 <MenuItem Header="Close" Click="BtnClose_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/close.png"></Image>
