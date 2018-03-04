@@ -48,7 +48,7 @@
                         <CheckBox Grid.Row="5" Margin="3" x:Name="ChbArrowKeys" Content="Allow arrow key input" />
                         <CheckBox Grid.Row="6" Margin="3" x:Name="ChbFileTitle" Content="Show file name in title" />
                         <CheckBox Grid.Row="7" Margin="3" x:Name="ChbWindowDragging" Content="Window dragging" />
-                        <CheckBox Grid.Row="8" Margin="3" x:Name="ChbStatusBar" Content="Statusbar" />
+                        <CheckBox Grid.Row="8" Margin="3" x:Name="ChbStatusBar" Content="Status bar" />
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
