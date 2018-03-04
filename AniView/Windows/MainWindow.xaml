@@ -16,10 +16,10 @@
     Icon="/AniView;component/Resources/Images/aniview.png">
     <Grid x:Name="GridMain" Focusable="True" Loaded="GridMain_OnLoaded">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="File">
@@ -115,8 +115,8 @@
                 </ContextMenu>
             </Grid.ContextMenu>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Image Visibility="Collapsed" x:Name="ImgView" Margin="5" Stretch="None"
                    gif:AnimationBehavior.Loaded="AnimationBehavior_OnLoaded"
@@ -126,15 +126,15 @@
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Slider x:Name="SldFrame" Maximum="100" Minimum="1" IsEnabled="False"></Slider>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button Margin="5" Background="Transparent" Click="BtnLeft_Click" FocusVisualStyle="{x:Null}">
                     <Image MaxHeight="64" MaxWidth="64" Source="/AniView;component/Resources/Images/left.png"></Image>
@@ -147,10 +147,10 @@
                 </Button>
             </Grid>
         </Grid>
-        <StatusBar Grid.Row="3">
-            <Label x:Name="LblDimensions"></Label>
-            <Separator></Separator>
-            <Label x:Name="LblSize"></Label>
+        <StatusBar x:Name="StbInfo" Grid.Row="3">
+            <Label x:Name="LblDimensions" Content="" FontSize="10" />
+            <Separator />
+            <Label x:Name="LblSize" Content="" FontSize="10" />
         </StatusBar>
     </Grid>
 </syncfusion:ChromelessWindow>

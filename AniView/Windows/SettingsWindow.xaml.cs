@@ -56,6 +56,7 @@ namespace AniView.Windows
                 ChbDragDrop.IsChecked = Properties.Settings.Default.DragDrop;
                 ChbArrowKeys.IsChecked = Properties.Settings.Default.ArrowKeys;
                 ChbFileTitle.IsChecked = Properties.Settings.Default.ShowFileTitle;
+                ChbStatusBar.IsChecked = Properties.Settings.Default.StatusBar;
 
                 if (Properties.Settings.Default.RepeatBehaviour > 3)
                 {
@@ -166,6 +167,7 @@ namespace AniView.Windows
                 if (ChbArrowKeys.IsChecked != null) Properties.Settings.Default.ArrowKeys = ChbArrowKeys.IsChecked.Value;
                 if (ChbFileTitle.IsChecked != null) Properties.Settings.Default.ShowFileTitle = ChbFileTitle.IsChecked.Value;
                 if (ChbWindowDragging.IsChecked != null) Properties.Settings.Default.WindowDragging = ChbWindowDragging.IsChecked.Value;
+                if (ChbStatusBar.IsChecked != null) Properties.Settings.Default.StatusBar = ChbStatusBar.IsChecked.Value;
 
                 if (CboRepeat.SelectedIndex == 4)
                 {

@@ -22,18 +22,18 @@ namespace AniView.Classes
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         private struct Shellexecuteinfo
         {
-            public int cbSize;
-            public uint fMask;
+            internal int cbSize;
+            internal uint fMask;
             private readonly IntPtr hwnd;
             [MarshalAs(UnmanagedType.LPTStr)]
-            public string lpVerb;
+            internal string lpVerb;
             [MarshalAs(UnmanagedType.LPTStr)]
-            public string lpFile;
+            internal string lpFile;
             [MarshalAs(UnmanagedType.LPTStr)]
             private readonly string lpParameters;
             [MarshalAs(UnmanagedType.LPTStr)]
             private readonly string lpDirectory;
-            public int nShow;
+            internal int nShow;
             private readonly IntPtr hInstApp;
             private readonly IntPtr lpIDList;
             [MarshalAs(UnmanagedType.LPTStr)]

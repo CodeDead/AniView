@@ -14,9 +14,9 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Image Width="64" Height="64" Source="/AniView;component/aniview.ico" Stretch="None"></Image>
             <Separator Margin="5" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
@@ -33,13 +33,13 @@ Copyright © CodeDead 2018
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Margin="5" x:Name="BtnClose" Content="Close" Click="BtnClose_OnClick"></Button>
-            <Button Margin="5"  Grid.Column="1" x:Name="BtnLicense" Content="License" Click="BtnLicense_OnClick"></Button>
-            <Button Margin="5" Grid.Column="2" x:Name="BtnCodeDead" Content="CodeDead" Click="BtnCodeDead_OnClick"></Button>
+            <Button Margin="5" x:Name="BtnClose" Content="Close" Click="BtnClose_OnClick" />
+            <Button Margin="5"  Grid.Column="1" x:Name="BtnLicense" Content="License" Click="BtnLicense_OnClick" />
+            <Button Margin="5" Grid.Column="2" x:Name="BtnCodeDead" Content="CodeDead" Click="BtnCodeDead_OnClick" />
         </Grid>
     </Grid>
 </syncfusion:ChromelessWindow>

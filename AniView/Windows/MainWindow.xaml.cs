@@ -267,6 +267,8 @@ namespace AniView.Windows
                 {
                     MouseDown -= OnMouseDown;
                 }
+
+                StbInfo.Visibility = Properties.Settings.Default.StatusBar ? Visibility.Visible : Visibility.Collapsed;
             }
             catch (Exception ex)
             {
@@ -371,7 +373,7 @@ namespace AniView.Windows
                 Title += " - " + _currentPath;
             }
 
-            LblSize.Content = new FileInfo(path).Length + " bytes";
+            LblSize.Content = (new FileInfo(path).Length / 1024f / 1024f).ToString("F2") + " MB";
         }
 
         /// <summary>
@@ -380,7 +382,10 @@ namespace AniView.Windows
         private void UnloadImage()
         {
             AnimationBehavior.SetSourceUri(ImgView, null);
+
             ImgView.Visibility = Visibility.Collapsed;
+            PgbLoading.Visibility = Visibility.Collapsed;
+
             _animator = null;
             _currentPath = "";
             _current = 0;
