@@ -103,6 +103,8 @@ namespace AniView.Windows
                 CboStyle.SelectedValue = Properties.Settings.Default.VisualStyle;
                 CpMetroBrush.Color = Properties.Settings.Default.MetroColor;
                 IntBorderThickness.Value = Properties.Settings.Default.BorderThickness;
+                SldOpacity.Value = Properties.Settings.Default.WindowOpacity * 100;
+                SldWindowResize.Value = Properties.Settings.Default.WindowResizeBorder;
             }
             catch (Exception ex)
             {
@@ -201,15 +203,17 @@ namespace AniView.Windows
 
                 Properties.Settings.Default.MetroColor = CpMetroBrush.Color;
                 if (IntBorderThickness.Value != null) Properties.Settings.Default.BorderThickness = (int)IntBorderThickness.Value;
+                Properties.Settings.Default.WindowOpacity = SldOpacity.Value / 100;
+                Properties.Settings.Default.WindowResizeBorder = SldWindowResize.Value;
 
                 Properties.Settings.Default.Save();
 
-                LoadSettings();
                 _mainWindow.LoadAnimationBehaviour();
                 _mainWindow.ChangeVisualStyle();
                 _mainWindow.LoadSettings();
 
                 ChangeVisualStyle();
+                LoadSettings();
             }
             catch (Exception ex)
             {
@@ -225,6 +229,26 @@ namespace AniView.Windows
         private void CboRepeat_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TxtCustomRepeat.IsEnabled = ((ComboBox) sender).SelectedIndex == 4;
+        }
+
+        /// <summary>
+        /// Method that is called when the opacity of the window should change dynamically
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
+        private void SldOpacity_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Opacity = SldOpacity.Value / 100;
+        }
+
+        /// <summary>
+        /// Method that is called when the ResizeBorderThickness of the window should change dynamically
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedPropertyChangedEventArgs</param>
+        private void SldWindowResize_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ResizeBorderThickness = new Thickness(SldWindowResize.Value);
         }
     }
 }

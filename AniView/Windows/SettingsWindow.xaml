@@ -95,6 +95,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" /> 
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -122,6 +124,10 @@
                     <syncfusion:ColorPicker Margin="3" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
                     <Label Margin="3"  Grid.Row="2" Grid.Column="0" Content="Border thickness:"></Label>
                     <syncfusion:IntegerTextBox Margin="3" x:Name="IntBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="0"></syncfusion:IntegerTextBox>
+                    <Label Margin="3" Grid.Row="3" Grid.Column="0" Content="Window opacity:" />
+                    <Slider x:Name="SldOpacity" Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Maximum="100" Width="150" ValueChanged="SldOpacity_OnValueChanged" />
+                    <Label Margin="3" Grid.Row="4" Grid.Column="0" Content="Resize border:" />
+                    <Slider x:Name="SldWindowResize" Margin="3" Grid.Row="4" Grid.Column="1" Minimum="2" Maximum="10" Width="150" ValueChanged="SldWindowResize_OnValueChanged" />
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>
