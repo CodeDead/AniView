@@ -70,9 +70,9 @@
                         <ComboBoxItem>Three times</ComboBoxItem>
                         <ComboBoxItem>Custom</ComboBoxItem>
                     </ComboBox>
-                    <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Custom repeat behaviour:"></Label>
+                    <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Custom repeat behaviour:" />
                     <syncfusion:IntegerTextBox Margin="3" x:Name="TxtCustomRepeat" Grid.Row="1" Grid.Column="1" MinValue="1" IsEnabled="False" />
-                    <Label Margin="3" Grid.Row="2" Grid.Column="0" Content="Frame format:"></Label>
+                    <Label Margin="3" Grid.Row="2" Grid.Column="0" Content="Frame format:" />
                     <ComboBox x:Name="CboFormat" Margin="3" Grid.Row="2" Grid.Column="1">
                         <ComboBoxItem>PNG</ComboBoxItem>
                         <ComboBoxItem>BMP</ComboBoxItem>
@@ -99,7 +99,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Label Margin="3" Content="Style:"></Label>
+                    <Label Margin="3" Content="Style:" />
                     <ComboBox Margin="3" x:Name="CboStyle" SelectedValuePath="Content" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
                         <ComboBoxItem>Metro</ComboBoxItem>
                         <ComboBoxItem>Blend</ComboBoxItem>
@@ -117,10 +117,10 @@
                         <ComboBoxItem>Transparent</ComboBoxItem>
                         <ComboBoxItem>None</ComboBoxItem>
                     </ComboBox>
-                    <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Metro brush:"></Label>
+                    <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Metro brush:" />
                     <syncfusion:ColorPicker Margin="3" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
-                    <Label Margin="3"  Grid.Row="2" Grid.Column="0" Content="Border thickness:"></Label>
-                    <syncfusion:IntegerTextBox Margin="3" x:Name="IntBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="0"></syncfusion:IntegerTextBox>
+                    <Label Margin="3"  Grid.Row="2" Grid.Column="0" Content="Border thickness:" />
+                    <syncfusion:IntegerTextBox Margin="3" x:Name="IntBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="0" />
                     <Label Margin="3" Grid.Row="3" Grid.Column="0" Content="Window opacity:" />
                     <Slider x:Name="SldOpacity" Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Maximum="100" Width="150" ValueChanged="SldOpacity_OnValueChanged" />
                     <Label Margin="3" Grid.Row="4" Grid.Column="0" Content="Resize border:" />
@@ -134,8 +134,8 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Margin="5" MinHeight="20" x:Name="BtnReset" Content="Reset" Click="BtnReset_OnClick"></Button>
-                <Button Grid.Column="1" MinHeight="20" Margin="5" x:Name="BtnSave" Content="Save" Click="BtnSave_OnClick"></Button>
+                <Button Margin="5" MinHeight="20" x:Name="BtnReset" Content="Reset" Click="BtnReset_OnClick" />
+                <Button Grid.Column="1" MinHeight="20" Margin="5" x:Name="BtnSave" Content="Save" Click="BtnSave_OnClick" />
             </Grid>
         </Grid>
     </Grid>

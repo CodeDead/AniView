@@ -30,7 +30,7 @@
                 </MenuItem>
                 <MenuItem Header="Close" Click="BtnClose_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/close.png"></Image>
+                        <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/close.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
@@ -56,7 +56,7 @@
             <MenuItem Header="Tools">
                 <MenuItem Header="File properties" Click="BtnProperties_OnClick">
                     <MenuItem.Icon>
-                        <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/properties.png"></Image>
+                        <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/properties.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
@@ -130,14 +130,14 @@
                    gif:AnimationBehavior.Loaded="AnimationBehavior_OnLoaded"
                    gif:AnimationBehavior.Error="AnimationBehavior_OnError"
                    gif:AnimationBehavior.DownloadProgress="AnimationBehavior_OnDownloadProgress" />
-            <ProgressBar Grid.Row="1" Margin="5" x:Name="PgbLoading" MinHeight="25" Visibility="Collapsed" IsIndeterminate="True" Value="1"></ProgressBar>
+            <ProgressBar Grid.Row="1" Margin="5" x:Name="PgbLoading" MinHeight="25" Visibility="Collapsed" IsIndeterminate="True" Value="1" />
         </Grid>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Slider x:Name="SldFrame" Maximum="100" Minimum="1" IsEnabled="False"></Slider>
+            <Slider x:Name="SldFrame" Maximum="100" Minimum="1" IsEnabled="False" />
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -145,13 +145,13 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button Margin="5" Background="Transparent" Click="BtnLeft_Click" FocusVisualStyle="{x:Null}">
-                    <Image MaxHeight="64" MaxWidth="64" Source="/AniView;component/Resources/Images/left.png"></Image>
+                    <Image MaxHeight="64" MaxWidth="64" Source="/AniView;component/Resources/Images/left.png" />
                 </Button>
                 <Button Margin="5" Grid.Column="1" Background="Transparent" Click="BtnPause_Click" FocusVisualStyle="{x:Null}">
-                    <Image MaxHeight="64" MaxWidth="64" x:Name="ImgPause" Source="/AniView;component/Resources/Images/pause.png"></Image>
+                    <Image MaxHeight="64" MaxWidth="64" x:Name="ImgPause" Source="/AniView;component/Resources/Images/pause.png" />
                 </Button>
                 <Button Margin="5" Grid.Column="2" Background="Transparent" Click="BtnRight_Click" FocusVisualStyle="{x:Null}">
-                    <Image MaxHeight="64" MaxWidth="64" Source="/AniView;component/Resources/Images/right.png"></Image>
+                    <Image MaxHeight="64" MaxWidth="64" Source="/AniView;component/Resources/Images/right.png" />
                 </Button>
             </Grid>
         </Grid>

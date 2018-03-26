@@ -105,7 +105,7 @@ namespace AniView.Windows
         /// </summary>
         public MainWindow()
         {
-            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView", "Information", "Cancel", "Download", "No new version is currently available.");
+            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView", "Information", "Cancel", "Download", "You are using the latest version of AniView");
 
             InitializeComponent();
             ChangeVisualStyle();

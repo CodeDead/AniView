@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Image Width="64" Height="64" Source="/AniView;component/aniview.ico" Stretch="None"></Image>
+            <Image Width="64" Height="64" Source="/AniView;component/aniview.ico" Stretch="None" />
             <Separator Margin="5" Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <TextBlock Grid.Column="2">
 AniView was created by DeadLine.<LineBreak></LineBreak>
