@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     AllowsTransparency="True" TitleTextAlignment="Center"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.SettingsWindow"
-    mc:Ignorable="d" Width="400" Height="350"
+    mc:Ignorable="d" Width="450" Height="350"
     UseLayoutRounding="True"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -29,26 +29,27 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <CheckBox Grid.Row="0" Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
-                        <CheckBox Grid.Row="1" Margin="3" x:Name="ChbAutoStartAnimation" Content="Automatically start animation" />
-                        <CheckBox Grid.Row="2" Margin="3" x:Name="ChbAutoSizeWindow" Content="Automatically resize window" />
-                        <CheckBox Grid.Row="3" Margin="3" x:Name="ChbFullScreen" Content="Full screen image" />
-                        <CheckBox Grid.Row="4" Margin="3" x:Name="ChbDragDrop" Content="Allow drag and drop" />
-                        <CheckBox Grid.Row="5" Margin="3" x:Name="ChbArrowKeys" Content="Allow arrow key input" />
-                        <CheckBox Grid.Row="6" Margin="3" x:Name="ChbFileTitle" Content="Show file name in title" />
-                        <CheckBox Grid.Row="7" Margin="3" x:Name="ChbWindowDragging" Content="Window dragging" />
-                        <CheckBox Grid.Row="8" Margin="3" x:Name="ChbStatusBar" Content="Status bar" />
+                        <CheckBox Grid.Row="0" Grid.Column="0" Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
+                        <CheckBox Grid.Row="0" Grid.Column="1" Margin="3" x:Name="ChbAutoStartAnimation" Content="Automatically start animation" />
+                        <CheckBox Grid.Row="1" Grid.Column="0" Margin="3" x:Name="ChbAutoSizeWindow" Content="Automatically resize window" />
+                        <CheckBox Grid.Row="1" Grid.Column="1" Margin="3" x:Name="ChbFullScreen" Content="Full screen image" />
+                        <CheckBox Grid.Row="2" Grid.Column="0" Margin="3" x:Name="ChbDragDrop" Content="Allow drag and drop" />
+                        <CheckBox Grid.Row="2" Grid.Column="1" Margin="3" x:Name="ChbArrowKeys" Content="Allow arrow key input" />
+                        <CheckBox Grid.Row="3" Grid.Column="0" Margin="3" x:Name="ChbFileTitle" Content="Show file name in title" />
+                        <CheckBox Grid.Row="3" Grid.Column="1" Margin="3" x:Name="ChbWindowDragging" Content="Window dragging" />
+                        <CheckBox Grid.Row="4" Grid.Column="0" Margin="3" x:Name="ChbStatusBar" Content="Status bar" />
+                        <CheckBox Grid.Row="4" Grid.Column="1" Margin="3" x:Name="ChbTopMost" Content="Topmost" />
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>

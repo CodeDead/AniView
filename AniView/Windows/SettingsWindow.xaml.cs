@@ -58,6 +58,17 @@ namespace AniView.Windows
                 ChbFileTitle.IsChecked = Properties.Settings.Default.ShowFileTitle;
                 ChbStatusBar.IsChecked = Properties.Settings.Default.StatusBar;
 
+                if (Properties.Settings.Default.Topmost)
+                {
+                    Topmost = true;
+                    ChbTopMost.IsChecked = false;
+                }
+                else
+                {
+                    Topmost = false;
+                    ChbTopMost.IsChecked = false;
+                }
+
                 if (Properties.Settings.Default.RepeatBehaviour > 3)
                 {
                     CboRepeat.SelectedIndex = 4;
@@ -136,7 +147,6 @@ namespace AniView.Windows
         {
             try
             {
-                if (MessageBox.Show("Are you sure that you want to reset all settings?", "AniView", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
                 Properties.Settings.Default.Reset();
                 Properties.Settings.Default.Save();
 
@@ -172,6 +182,7 @@ namespace AniView.Windows
                 if (ChbFileTitle.IsChecked != null) Properties.Settings.Default.ShowFileTitle = ChbFileTitle.IsChecked.Value;
                 if (ChbWindowDragging.IsChecked != null) Properties.Settings.Default.WindowDragging = ChbWindowDragging.IsChecked.Value;
                 if (ChbStatusBar.IsChecked != null) Properties.Settings.Default.StatusBar = ChbStatusBar.IsChecked.Value;
+                if (ChbTopMost.IsChecked != null) Properties.Settings.Default.Topmost = ChbTopMost.IsChecked.Value;
 
                 if (CboRepeat.SelectedIndex == 4)
                 {

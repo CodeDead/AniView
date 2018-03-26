@@ -34,6 +34,8 @@ namespace AniView.Windows
                 {
                     MouseDown += OnMouseDown;
                 }
+
+                Topmost = Properties.Settings.Default.Topmost;
             }
             catch (Exception ex)
             {
