@@ -92,6 +92,8 @@ namespace AniView.Windows
                 if (Properties.Settings.Default.WindowDragging)
                 {
                     ChbWindowDragging.IsChecked = true;
+                    // Prevent duplicate handlers
+                    MouseDown -= OnMouseDown;
                     MouseDown += OnMouseDown;
                 }
                 else

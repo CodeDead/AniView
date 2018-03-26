@@ -34,14 +34,10 @@ namespace AniView.Windows
                 {
                     MouseDown += OnMouseDown;
                 }
-                else
-                {
-                    MouseDown -= OnMouseDown;
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "MemPlus", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
