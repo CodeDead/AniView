@@ -6,7 +6,7 @@
     AllowsTransparency="True" TitleTextAlignment="Center"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.SettingsWindow"
     mc:Ignorable="d" Width="450" Height="350"
-    UseLayoutRounding="True"
+    UseLayoutRounding="True" UseNativeChrome="True"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
