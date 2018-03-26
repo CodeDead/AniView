@@ -65,6 +65,7 @@
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/monitor.png" />
                     </MenuItem.Icon>
                     <MenuItem x:Name="MniTopmost" Header="Topmost" IsCheckable="True" Checked="MniTopmost_OnChecked" Unchecked="MniTopmost_OnChecked" />
+                    <MenuItem x:Name="MniStatusbar" Header="Statusbar" IsCheckable="True" Checked="MniStatusbar_OnChecked" Unchecked="MniStatusbar_OnChecked" />
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="Settings" Click="BtnSettings_Click">

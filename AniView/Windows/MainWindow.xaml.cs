@@ -273,7 +273,8 @@ namespace AniView.Windows
                 Topmost = Properties.Settings.Default.Topmost;
                 MniTopmost.IsChecked = Topmost;
 
-                StbInfo.Visibility = Properties.Settings.Default.StatusBar ? Visibility.Visible : Visibility.Collapsed;
+                MniStatusbar.IsChecked = Properties.Settings.Default.StatusBar;
+                StbInfo.Visibility = MniStatusbar.IsChecked ? Visibility.Visible : Visibility.Collapsed;
             }
             catch (Exception ex)
             {
@@ -605,6 +606,46 @@ namespace AniView.Windows
         }
 
         /// <summary>
+        /// Method that is called when the Topmost property should change
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void MniTopmost_OnChecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.Topmost = MniTopmost.IsChecked;
+                Properties.Settings.Default.Save();
+
+                Topmost = MniTopmost.IsChecked;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Method that is called when the visibility of the Statusbar should change
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void MniStatusbar_OnChecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.StatusBar = MniStatusbar.IsChecked;
+                Properties.Settings.Default.Save();
+
+                StbInfo.Visibility = MniStatusbar.IsChecked ? Visibility.Visible : Visibility.Collapsed;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
         /// Open a new SettingsWindow
         /// </summary>
         /// <param name="sender">The object that has initialized the method</param>
@@ -806,26 +847,6 @@ namespace AniView.Windows
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        /// <summary>
-        /// Method that is called when the Topmost property should change
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The RoutedEventArgs</param>
-        private void MniTopmost_OnChecked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Properties.Settings.Default.Topmost = MniTopmost.IsChecked;
-                Properties.Settings.Default.Save();
-
-                Topmost = MniTopmost.IsChecked;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
