@@ -80,13 +80,13 @@
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/help.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <Separator></Separator>
+                <Separator />
                 <MenuItem Header="Check for updates" Click="BtnUpdate_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/update.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <Separator></Separator>
+                <Separator />
                 <MenuItem Header="Homepage" Click="BtnCodeDead_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/house.png"/>
@@ -97,7 +97,7 @@
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/license.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <Separator></Separator>
+                <Separator />
                 <MenuItem Header="Donate" Click="BtnDonate_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/money.png"/>

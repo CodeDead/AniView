@@ -14,15 +14,11 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <syncfusion:TabControlExt
-            CloseButtonType="Hide"
-            EnableLabelEdit="False"
-            AllowDragDrop="False"
-            DefaultContextMenuItemVisibility="Hidden">
+            CloseButtonType="Hide" EnableLabelEdit="False"
+            AllowDragDrop="False" DefaultContextMenuItemVisibility="Hidden">
             <syncfusion:TabItemExt
-                Header="General"
-                Image="../Resources/Images/settings_tab.png"
-                ImageWidth="16"
-                ImageHeight="16">
+                Header="General" Image="../Resources/Images/settings_tab.png"
+                ImageWidth="16" ImageHeight="16">
                 <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
