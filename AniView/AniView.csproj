@@ -76,7 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\ImageExtractor.cs" />
+    <Compile Include="Classes\ImageUtils.cs" />
     <Compile Include="Classes\NativeMethods.cs" />
     <Compile Include="Classes\StyleManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

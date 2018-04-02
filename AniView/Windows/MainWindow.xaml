@@ -34,7 +34,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="Export" Click="BtnExport_Click">
+                <MenuItem Header="Export all frames" Click="BtnExport_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/export.png" />
                     </MenuItem.Icon>
@@ -156,9 +156,11 @@
             </Grid>
         </Grid>
         <StatusBar x:Name="StbInfo" Grid.Row="3">
-            <Label x:Name="LblDimensions" Content="" FontSize="10" />
+            <Label x:Name="LblDimensions" Content="" />
             <Separator />
-            <Label x:Name="LblSize" Content="" FontSize="10" />
+            <Label x:Name="LblSize" Content="" />
+            <Separator />
+            <Label x:Name="LblFrames" Content="" />
         </StatusBar>
     </Grid>
 </syncfusion:ChromelessWindow>

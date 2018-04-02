@@ -3,13 +3,14 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AniView.Classes
 {
     /// <summary>
     /// This class contains methods and functions to manipulate an image
     /// </summary>
-    internal static class ImageExtractor
+    internal static class ImageUtils
     {
         /// <summary>
         /// Extract all frames of an animated image
@@ -75,6 +76,26 @@ namespace AniView.Classes
                 frames[i] = (Image)originalImg.Clone();
             }
             return frames;
+        }
+
+        /// <summary>
+        /// Get the number of frames inside an image
+        /// </summary>
+        /// <param name="path">The path of the image</param>
+        /// <returns>The number of frames inside an image</returns>
+        internal static int GetFrameCount(string path)
+        {
+            try
+            {
+                Image img = Image.FromFile(path);
+                return img.GetFrameCount(FrameDimension.Time);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            return -1;
         }
     }
 }

@@ -105,7 +105,7 @@ namespace AniView.Windows
         /// </summary>
         public MainWindow()
         {
-            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView", "Information", "Cancel", "Download", "You are using the latest version of AniView");
+            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView", "Information", "Cancel", "Download", "You are using the latest version of AniView.");
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -326,7 +326,10 @@ namespace AniView.Windows
             PgbLoading.Visibility = Visibility.Visible;
             ImgView.Visibility = Visibility.Collapsed;
             SldFrame.Value = 0;
-            SldFrame.Maximum = 100;
+
+            LblDimensions.Content = "";
+            LblSize.Content = "";
+            LblFrames.Content = "";
 
             try
             {
@@ -378,8 +381,6 @@ namespace AniView.Windows
             {
                 Title += " - " + _currentPath;
             }
-
-            LblSize.Content = (new FileInfo(path).Length / 1024f / 1024f).ToString("F2") + " MB";
         }
 
         /// <summary>
@@ -397,8 +398,11 @@ namespace AniView.Windows
             _current = 0;
             _images = new List<string>();
             Title = "AniView";
+
             LblSize.Content = "";
+            LblFrames.Content = "";
             LblDimensions.Content = "";
+
             SldFrame.Value = 0;
         }
 
@@ -540,7 +544,10 @@ namespace AniView.Windows
             _animator.AnimationCompleted += AnimationCompleted;
             SldFrame.Value = 0;
             SldFrame.Maximum = _animator.FrameCount - 1;
+
             LblDimensions.Content = ImgView.Source.Width + " x " + ImgView.Source.Height;
+            LblSize.Content = (new FileInfo(_currentPath).Length / 1024f / 1024f).ToString("F2") + " MB";
+            LblFrames.Content = "Frames: " + ImageUtils.GetFrameCount(_currentPath);
         }
 
         /// <summary>
@@ -740,7 +747,7 @@ namespace AniView.Windows
             if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
             try
             {
-                await ImageExtractor.ExtractFrames(_currentPath, fbd.SelectedPath, Properties.Settings.Default.ImageFormat);
+                await ImageUtils.ExtractFrames(_currentPath, fbd.SelectedPath, Properties.Settings.Default.ImageFormat);
                 MessageBox.Show("All frames have been extracted!", "AniView", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
