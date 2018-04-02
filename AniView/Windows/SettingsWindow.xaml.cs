@@ -61,7 +61,7 @@ namespace AniView.Windows
                 if (Properties.Settings.Default.Topmost)
                 {
                     Topmost = true;
-                    ChbTopMost.IsChecked = false;
+                    ChbTopMost.IsChecked = true;
                 }
                 else
                 {
