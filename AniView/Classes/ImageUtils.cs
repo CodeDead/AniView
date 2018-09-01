@@ -94,7 +94,6 @@ namespace AniView.Classes
             {
                 MessageBox.Show(e.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
             return -1;
         }
     }

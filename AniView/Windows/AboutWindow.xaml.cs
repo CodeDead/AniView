@@ -19,7 +19,8 @@ namespace AniView.Windows
         public AboutWindow()
         {
             InitializeComponent();
-            ChangeVisualStyle();
+            // Change the theme
+            StyleManager.ChangeStyle(this);
             LoadProperties();
         }
 
@@ -54,14 +55,6 @@ namespace AniView.Windows
             {
                 DragMove();
             }
-        }
-
-        /// <summary>
-        /// Change the visual style of the controls, depending on the settings.
-        /// </summary>
-        private void ChangeVisualStyle()
-        {
-            StyleManager.ChangeStyle(this);
         }
 
         /// <summary>

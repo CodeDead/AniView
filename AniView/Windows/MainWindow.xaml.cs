@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using AniView.Classes;
+using UpdateManager.Classes;
 using XamlAnimatedGif;
 using Application = System.Windows.Application;
 using DataFormats = System.Windows.DataFormats;
@@ -105,7 +106,16 @@ namespace AniView.Windows
         /// </summary>
         public MainWindow()
         {
-            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", "AniView", "Information", "Cancel", "Download", "You are using the latest version of AniView.");
+            StringVariables stringVariables = new StringVariables
+            {
+                CancelButtonText = "Cancel",
+                DownloadButtonText = "Download",
+                InformationButtonText = "Information",
+                NoNewVersionText = "You are running the latest version!",
+                TitleText = "AniView",
+                UpdateNowText = "Would you like to update the application now?"
+            };
+            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables);
 
             InitializeComponent();
             ChangeVisualStyle();

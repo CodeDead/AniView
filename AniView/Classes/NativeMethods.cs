@@ -12,15 +12,15 @@ namespace AniView.Classes
         /// Performs an operation on a specified file
         /// </summary>
         /// <param name="lpExecInfo">A pointer to a SHELLEXECUTEINFO structure that contains and receives information about the application being executed</param>
-        /// <returns>eturns TRUE if successful; otherwise, FALSE</returns>
+        /// <returns>Returns True if successful; otherwise, False</returns>
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
-        private static extern bool ShellExecuteEx(ref Shellexecuteinfo lpExecInfo);
+        private static extern bool ShellExecuteEx(ref ShellExecuteInfo lpExecInfo);
 
         /// <summary>
         /// Contains information used by ShellExecuteEx
         /// </summary>
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        private struct Shellexecuteinfo
+        private struct ShellExecuteInfo
         {
             internal int cbSize;
             internal uint fMask;
@@ -51,7 +51,7 @@ namespace AniView.Classes
         /// <param name="path">The path of the file</param>
         internal static void ShowFileProperties(string path)
         {
-            Shellexecuteinfo info = new Shellexecuteinfo();
+            ShellExecuteInfo info = new ShellExecuteInfo();
             info.cbSize = Marshal.SizeOf(info);
             info.lpVerb = "properties";
             info.lpFile = path;
