@@ -63,9 +63,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="XamlAnimatedGif, Version=1.1.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlAnimatedGif.1.1.10\lib\net45\XamlAnimatedGif.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="XamlAnimatedGif, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XamlAnimatedGif.1.2.1\lib\net45\XamlAnimatedGif.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +74,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\ImageUtils.cs" />
     <Compile Include="Classes\NativeMethods.cs" />
+    <Compile Include="Classes\SettingsBinder.cs" />
     <Compile Include="Classes\StyleManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -135,7 +135,6 @@
     <Resource Include="aniview.ico" />
     <Resource Include="Resources\Images\left.png" />
     <Resource Include="Resources\Images\right.png" />
-    <Resource Include="Resources\Images\replay.png" />
     <Resource Include="Resources\Images\aniview.png" />
     <Resource Include="Resources\Images\properties.png" />
     <Resource Include="Resources\Images\about.png" />
@@ -169,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\play.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

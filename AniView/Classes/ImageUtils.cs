@@ -19,7 +19,7 @@ namespace AniView.Classes
         /// <param name="savePath">The full path where the frames should be saved</param>
         /// <param name="format">The image format in which the frames should be exported</param>
         /// <returns>An integer</returns>
-        internal static async Task<int> ExtractFrames(string path, string savePath, ImageFormat format)
+        internal static async Task ExtractFrames(string path, string savePath, ImageFormat format)
         {
             await Task.Run(() =>
             {
@@ -31,10 +31,8 @@ namespace AniView.Classes
                     {
                         frames[i].Save(savePath + "\\" + i + ext, format);
                     }
-                    return 0;
                 }
             });
-            return 0;
         }
 
         /// <summary>

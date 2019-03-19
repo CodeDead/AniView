@@ -14,7 +14,7 @@
     <Setting Name="AutoUpdate" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="RepeatBehaviour" Type="System.Int32" Scope="User">
+    <Setting Name="RepeatBehaviourIndex" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ImageFormat" Type="System.Drawing.Imaging.ImageFormat" Scope="User">
@@ -45,13 +45,16 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="WindowOpacity" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="WindowResizeBorder" Type="System.Double" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="Topmost" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CustomRepeatBehaviour" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

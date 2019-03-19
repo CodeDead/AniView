@@ -3,10 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:bind="clr-namespace:AniView.Classes"
     AllowsTransparency="True" TitleTextAlignment="Center"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.SettingsWindow"
     mc:Ignorable="d" Width="450" Height="350"
     UseLayoutRounding="True" UseNativeChrome="True"
+    Closing="SettingsWindow_OnClosing"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -36,16 +38,16 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <CheckBox Grid.Row="0" Grid.Column="0" Margin="3" x:Name="ChbAutoUpdate" Content="Automatically check for updates" />
-                        <CheckBox Grid.Row="0" Grid.Column="1" Margin="3" x:Name="ChbAutoStartAnimation" Content="Automatically start animation" />
-                        <CheckBox Grid.Row="1" Grid.Column="0" Margin="3" x:Name="ChbAutoSizeWindow" Content="Automatically resize window" />
-                        <CheckBox Grid.Row="1" Grid.Column="1" Margin="3" x:Name="ChbFullScreen" Content="Full screen image" />
-                        <CheckBox Grid.Row="2" Grid.Column="0" Margin="3" x:Name="ChbDragDrop" Content="Allow drag and drop" />
-                        <CheckBox Grid.Row="2" Grid.Column="1" Margin="3" x:Name="ChbArrowKeys" Content="Allow arrow key input" />
-                        <CheckBox Grid.Row="3" Grid.Column="0" Margin="3" x:Name="ChbFileTitle" Content="Show file name in title" />
-                        <CheckBox Grid.Row="3" Grid.Column="1" Margin="3" x:Name="ChbWindowDragging" Content="Window dragging" />
-                        <CheckBox Grid.Row="4" Grid.Column="0" Margin="3" x:Name="ChbStatusBar" Content="Status bar" />
-                        <CheckBox Grid.Row="4" Grid.Column="1" Margin="3" x:Name="ChbTopMost" Content="Topmost" />
+                        <CheckBox Grid.Row="0" Grid.Column="0" Margin="3" Content="Automatically check for updates" IsChecked="{bind:SettingsBinder AutoUpdate}" />
+                        <CheckBox Grid.Row="0" Grid.Column="1" Margin="3" Content="Automatically start animation" IsChecked="{bind:SettingsBinder AutoStart}" />
+                        <CheckBox Grid.Row="1" Grid.Column="0" Margin="3" Content="Automatically resize window" IsChecked="{bind:SettingsBinder AutoSizeWindow}" />
+                        <CheckBox Grid.Row="1" Grid.Column="1" Margin="3" Content="Full screen image" IsChecked="{bind:SettingsBinder FullScreen}" />
+                        <CheckBox Grid.Row="2" Grid.Column="0" Margin="3" Content="Allow drag and drop" IsChecked="{bind:SettingsBinder DragDrop}" />
+                        <CheckBox Grid.Row="2" Grid.Column="1" Margin="3" Content="Allow arrow key input" IsChecked="{bind:SettingsBinder ArrowKeys}"/>
+                        <CheckBox Grid.Row="3" Grid.Column="0" Margin="3" Content="Show file name in title" IsChecked="{bind:SettingsBinder ShowFileTitle}" />
+                        <CheckBox Grid.Row="3" Grid.Column="1" Margin="3" Content="Window dragging" IsChecked="{bind:SettingsBinder WindowDragging}"/>
+                        <CheckBox Grid.Row="4" Grid.Column="0" Margin="3" Content="Status bar" IsChecked="{bind:SettingsBinder StatusBar}"/>
+                        <CheckBox Grid.Row="4" Grid.Column="1" Margin="3" Content="Topmost" IsChecked="{bind:SettingsBinder Topmost}" />
                     </Grid>
                 </Grid>
             </syncfusion:TabItemExt>
@@ -62,16 +64,19 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
+                    
                     <Label Margin="3" Content="Repeat behaviour:"></Label>
-                    <ComboBox x:Name="CboRepeat" Margin="3" Grid.Row="0" Grid.Column="1" SelectionChanged="CboRepeat_OnSelectionChanged">
+                    <ComboBox x:Name="CboRepeat" Margin="3" Grid.Row="0" Grid.Column="1" SelectedIndex="{bind:SettingsBinder RepeatBehaviourIndex}">
                         <ComboBoxItem>Infinite</ComboBoxItem>
                         <ComboBoxItem>Only once</ComboBoxItem>
                         <ComboBoxItem>Twice</ComboBoxItem>
                         <ComboBoxItem>Three times</ComboBoxItem>
                         <ComboBoxItem>Custom</ComboBoxItem>
                     </ComboBox>
+
                     <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Custom repeat behaviour:" />
-                    <syncfusion:IntegerTextBox Margin="3" x:Name="TxtCustomRepeat" Grid.Row="1" Grid.Column="1" MinValue="1" IsEnabled="False" />
+                    <syncfusion:IntegerTextBox Margin="3" Grid.Row="1" Grid.Column="1" MinValue="1" Value="{bind:SettingsBinder CustomRepeatBehaviour}" />
+                    
                     <Label Margin="3" Grid.Row="2" Grid.Column="0" Content="Frame format:" />
                     <ComboBox x:Name="CboFormat" Margin="3" Grid.Row="2" Grid.Column="1">
                         <ComboBoxItem>PNG</ComboBoxItem>
@@ -99,8 +104,9 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
+                    
                     <Label Margin="3" Content="Style:" />
-                    <ComboBox Margin="3" x:Name="CboStyle" SelectedValuePath="Content" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
+                    <ComboBox Margin="3" SelectedValuePath="Content" SelectedValue="{bind:SettingsBinder VisualStyle}" Grid.Row="0" Grid.Column="1" IsReadOnly="True">
                         <ComboBoxItem>Metro</ComboBoxItem>
                         <ComboBoxItem>Blend</ComboBoxItem>
                         <ComboBoxItem>VS2010</ComboBoxItem>
@@ -117,14 +123,18 @@
                         <ComboBoxItem>Transparent</ComboBoxItem>
                         <ComboBoxItem>None</ComboBoxItem>
                     </ComboBox>
+                    
                     <Label Margin="3" Grid.Row="1" Grid.Column="0" Content="Metro brush:" />
-                    <syncfusion:ColorPicker Margin="3" x:Name="CpMetroBrush" Grid.Row="1" Grid.Column="1" />
+                    <syncfusion:ColorPicker Margin="3" Grid.Row="1" Grid.Column="1" Color="{bind:SettingsBinder MetroColor}"/>
+                    
                     <Label Margin="3"  Grid.Row="2" Grid.Column="0" Content="Border thickness:" />
-                    <syncfusion:IntegerTextBox Margin="3" x:Name="IntBorderThickness" Grid.Row="2" Grid.Column="1" MinValue="0" />
+                    <syncfusion:IntegerTextBox Margin="3" Grid.Row="2" Grid.Column="1" MinValue="0" Value="{bind:SettingsBinder BorderThickness}" ValueChanged="BorderThickness_OnValueChanged"/>
+                    
                     <Label Margin="3" Grid.Row="3" Grid.Column="0" Content="Window opacity:" />
-                    <Slider x:Name="SldOpacity" Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Maximum="100" Width="150" ValueChanged="SldOpacity_OnValueChanged" />
+                    <Slider Margin="3" Grid.Row="3" Grid.Column="1" Minimum="30" Maximum="100" Width="150" ValueChanged="SldOpacity_OnValueChanged" Value="{bind:SettingsBinder WindowOpacity}"/>
+                    
                     <Label Margin="3" Grid.Row="4" Grid.Column="0" Content="Resize border:" />
-                    <Slider x:Name="SldWindowResize" Margin="3" Grid.Row="4" Grid.Column="1" Minimum="2" Maximum="10" Width="150" ValueChanged="SldWindowResize_OnValueChanged" />
+                    <Slider Margin="3" Grid.Row="4" Grid.Column="1" Minimum="2" Maximum="10" Width="150" ValueChanged="SldWindowResize_OnValueChanged" Value="{bind:SettingsBinder WindowResizeBorder}"/>
                 </Grid>
             </syncfusion:TabItemExt>
         </syncfusion:TabControlExt>
@@ -134,8 +144,8 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Margin="5" MinHeight="20" x:Name="BtnReset" Content="Reset" Click="BtnReset_OnClick" />
-                <Button Grid.Column="1" MinHeight="20" Margin="5" x:Name="BtnSave" Content="Save" Click="BtnSave_OnClick" />
+                <Button Margin="5" MinHeight="20" Content="Reset" Click="BtnReset_OnClick" />
+                <Button Grid.Column="1" MinHeight="20" Margin="5" Content="Save" Click="BtnSave_OnClick" />
             </Grid>
         </Grid>
     </Grid>

@@ -12,7 +12,7 @@ namespace AniView.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -74,12 +74,12 @@ namespace AniView.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int RepeatBehaviour {
+        public int RepeatBehaviourIndex {
             get {
-                return ((int)(this["RepeatBehaviour"]));
+                return ((int)(this["RepeatBehaviourIndex"]));
             }
             set {
-                this["RepeatBehaviour"] = value;
+                this["RepeatBehaviourIndex"] = value;
             }
         }
         
@@ -193,7 +193,7 @@ namespace AniView.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public double WindowOpacity {
             get {
                 return ((double)(this["WindowOpacity"]));
@@ -224,6 +224,18 @@ namespace AniView.Properties {
             }
             set {
                 this["Topmost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int CustomRepeatBehaviour {
+            get {
+                return ((int)(this["CustomRepeatBehaviour"]));
+            }
+            set {
+                this["CustomRepeatBehaviour"] = value;
             }
         }
     }

@@ -8,13 +8,14 @@
     x:Class="AniView.Windows.MainWindow"
     mc:Ignorable="d"
     UseLayoutRounding="True"
-    Title="AniView" WindowStartupLocation="CenterScreen"
+    Title="AniView"
     AllowsTransparency="True" UseNativeChrome="True"
     TitleTextAlignment="Center"
-    SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen"
+    Width="350" Height="250"
     Drop="GridMain_OnDrop" KeyDown="GridMain_OnKeyDown"
     Icon="/AniView;component/Resources/Images/aniview.png">
-    <Grid x:Name="GridMain" Focusable="True" Loaded="GridMain_OnLoaded">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />

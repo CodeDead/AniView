@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -100,32 +101,6 @@ namespace AniView.Windows
         private bool _autoStartAnimation;
         #endregion
 
-        /// <inheritdoc />
-        /// <summary>
-        /// Initialize a new MainWindow object
-        /// </summary>
-        public MainWindow()
-        {
-            StringVariables stringVariables = new StringVariables
-            {
-                CancelButtonText = "Cancel",
-                DownloadButtonText = "Download",
-                InformationButtonText = "Information",
-                NoNewVersionText = "You are running the latest version!",
-                TitleText = "AniView",
-                UpdateNowText = "Would you like to update the application now?"
-            };
-            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables);
-
-            InitializeComponent();
-            ChangeVisualStyle();
-            LoadAnimationBehaviour();
-
-            LoadArguments();
-            AutoUpdate();
-            LoadSettings();
-        }
-
         #region Properties
         /// <summary>
         /// A property to indicate whether the image playlist should be repeated indefinitely
@@ -221,16 +196,36 @@ namespace AniView.Windows
         }
         #endregion
 
+        /// <inheritdoc />
         /// <summary>
-        /// Load the animation behaviour for XamlAnimatedGif
+        /// Initialize a new MainWindow object
         /// </summary>
-        internal void LoadAnimationBehaviour()
+        public MainWindow()
         {
+            StringVariables stringVariables = new StringVariables
+            {
+                CancelButtonText = "Cancel",
+                DownloadButtonText = "Download",
+                InformationButtonText = "Information",
+                NoNewVersionText = "You are running the latest version!",
+                TitleText = "AniView",
+                UpdateNowText = "Would you like to update the application now?"
+            };
+            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables);
+
+            InitializeComponent();
+            ChangeVisualStyle();
+            LoadAnimationBehaviour();
+            LoadSettings();
+
+            LoadArguments();
+
             try
             {
-                AnimationBehavior.SetRepeatBehavior(ImgView, Properties.Settings.Default.RepeatBehaviour == 0 ? RepeatBehavior.Forever : new RepeatBehavior(Properties.Settings.Default.RepeatBehaviour));
-                _autoStartAnimation = Properties.Settings.Default.AutoStart;
-                AnimationBehavior.SetAutoStart(ImgView, _autoStartAnimation);
+                if (Properties.Settings.Default.AutoUpdate)
+                {
+                    _updateManager.CheckForUpdate(false, false);
+                }
             }
             catch (Exception ex)
             {
@@ -239,16 +234,18 @@ namespace AniView.Windows
         }
 
         /// <summary>
-        /// Automatically check for updates
+        /// Load the animation behaviour for XamlAnimatedGif
         /// </summary>
-        private void AutoUpdate()
+        internal void LoadAnimationBehaviour()
         {
             try
             {
-                if (Properties.Settings.Default.AutoUpdate)
-                {
-                    _updateManager.CheckForUpdate(false, false);
-                }
+                int repeats = Properties.Settings.Default.RepeatBehaviourIndex;
+                if (repeats == 4) repeats = Properties.Settings.Default.CustomRepeatBehaviour;
+
+                AnimationBehavior.SetRepeatBehavior(ImgView, repeats == 0 ? RepeatBehavior.Forever : new RepeatBehavior(repeats));
+                _autoStartAnimation = Properties.Settings.Default.AutoStart;
+                AnimationBehavior.SetAutoStart(ImgView, _autoStartAnimation);
             }
             catch (Exception ex)
             {
@@ -264,7 +261,7 @@ namespace AniView.Windows
             try
             {
                 BtnFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
-                GridMain.AllowDrop = Properties.Settings.Default.DragDrop;
+                AllowDrop = Properties.Settings.Default.DragDrop;
                 _arrowKeysEnabled = Properties.Settings.Default.ArrowKeys;
                 _autoSizeWindow = Properties.Settings.Default.AutoSizeWindow;
                 _showFileTitle = Properties.Settings.Default.ShowFileTitle;
@@ -341,6 +338,7 @@ namespace AniView.Windows
             LblSize.Content = "";
             LblFrames.Content = "";
 
+            // Check if an image is valid
             try
             {
                 BitmapImage bitmap = new BitmapImage();
@@ -354,13 +352,14 @@ namespace AniView.Windows
             }
             catch (NotSupportedException ex)
             {
+                PgbLoading.Visibility = Visibility.Collapsed;
                 MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             AnimationBehavior.SetSourceUri(ImgView, new Uri(path));
             _images = new List<string>();
-            ImgPause.Source = _autoStartAnimation ? new BitmapImage(new Uri("/AniView;component/Resources/Images/pause.png", UriKind.Relative)) : new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
+            ImgPause.Source = _autoStartAnimation ? new BitmapImage(new Uri("/AniView;component/Resources/Images/pause.png", UriKind.Relative)) : new BitmapImage(new Uri("/AniView;component/Resources/Images/play.png", UriKind.Relative));
             if (_autoSizeWindow)
             {
                 SizeToContent = SizeToContent.WidthAndHeight;
@@ -480,7 +479,7 @@ namespace AniView.Windows
             else
             {
                 _animator.Pause();
-                ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
+                ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/play.png", UriKind.Relative));
             }
         }
 
@@ -507,7 +506,7 @@ namespace AniView.Windows
             if (!RepeatForever)
             {
                 _animator.Pause();
-                ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/replay.png", UriKind.Relative));
+                ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/play.png", UriKind.Relative));
             }
             Completed = true;
         }
@@ -815,29 +814,21 @@ namespace AniView.Windows
         /// </summary>
         /// <param name="sender">The object that has initialized the method</param>
         /// <param name="e">The key event arguments</param>
+        [SuppressMessage("ReSharper", "SwitchStatementMissingSomeCases")]
         private void GridMain_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (!_arrowKeysEnabled) return;
-            if (e.Key == Key.Left)
+            switch (e.Key)
             {
-                MoveLeft();
-                e.Handled = true;
+                case Key.Left:
+                    MoveLeft();
+                    e.Handled = true;
+                    break;
+                case Key.Right:
+                    MoveRight();
+                    e.Handled = true;
+                    break;
             }
-            else if (e.Key == Key.Right)
-            {
-                MoveRight();
-                e.Handled = true;
-            }
-        }
-
-        /// <summary>
-        /// Method that will be called when the GridMain object has loaded
-        /// </summary>
-        /// <param name="sender">The object that has initialized the method</param>
-        /// <param name="e">The routed event arguments</param>
-        private void GridMain_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            GridMain.Focus();
         }
 
         /// <summary>

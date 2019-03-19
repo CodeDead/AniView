@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace AniView.Classes
@@ -6,6 +7,7 @@ namespace AniView.Classes
     /// <summary>
     /// This class contains external native methods
     /// </summary>
+    [SuppressMessage("ReSharper", "IdentifierTypo")]
     internal class NativeMethods
     {
         /// <summary>

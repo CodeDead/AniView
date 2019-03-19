@@ -223,9 +223,9 @@ namespace AniView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap properties {
+        internal static System.Drawing.Bitmap play {
             get {
-                object obj = ResourceManager.GetObject("properties", resourceCulture);
+                object obj = ResourceManager.GetObject("play", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace AniView.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap replay {
+        internal static System.Drawing.Bitmap properties {
             get {
-                object obj = ResourceManager.GetObject("replay", resourceCulture);
+                object obj = ResourceManager.GetObject("properties", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
