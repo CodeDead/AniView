@@ -1,4 +1,6 @@
 # AniView
+![AniView](https://i.imgur.com/oe1Y4Bm.png)
+
 GIF Image Viewer
 
 # About
