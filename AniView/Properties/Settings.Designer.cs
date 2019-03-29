@@ -8,233 +8,291 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AniView.Properties {
-    
-    
+namespace AniView.Properties
+{
+
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        
-        public static Settings Default {
-            get {
+
+        public static Settings Default
+        {
+            get
+            {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Metro")]
-        public string VisualStyle {
-            get {
+        public string VisualStyle
+        {
+            get
+            {
                 return ((string)(this["VisualStyle"]));
             }
-            set {
+            set
+            {
                 this["VisualStyle"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("#FF07779C")]
-        public global::System.Windows.Media.Color MetroColor {
-            get {
+        public global::System.Windows.Media.Color MetroColor
+        {
+            get
+            {
                 return ((global::System.Windows.Media.Color)(this["MetroColor"]));
             }
-            set {
+            set
+            {
                 this["MetroColor"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int BorderThickness {
-            get {
+        public int BorderThickness
+        {
+            get
+            {
                 return ((int)(this["BorderThickness"]));
             }
-            set {
+            set
+            {
                 this["BorderThickness"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AutoUpdate {
-            get {
+        public bool AutoUpdate
+        {
+            get
+            {
                 return ((bool)(this["AutoUpdate"]));
             }
-            set {
+            set
+            {
                 this["AutoUpdate"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int RepeatBehaviourIndex {
-            get {
+        public int RepeatBehaviourIndex
+        {
+            get
+            {
                 return ((int)(this["RepeatBehaviourIndex"]));
             }
-            set {
+            set
+            {
                 this["RepeatBehaviourIndex"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Png")]
-        public global::System.Drawing.Imaging.ImageFormat ImageFormat {
-            get {
+        public global::System.Drawing.Imaging.ImageFormat ImageFormat
+        {
+            get
+            {
                 return ((global::System.Drawing.Imaging.ImageFormat)(this["ImageFormat"]));
             }
-            set {
+            set
+            {
                 this["ImageFormat"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool FullScreen {
-            get {
+        public bool FullScreen
+        {
+            get
+            {
                 return ((bool)(this["FullScreen"]));
             }
-            set {
+            set
+            {
                 this["FullScreen"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool DragDrop {
-            get {
+        public bool DragDrop
+        {
+            get
+            {
                 return ((bool)(this["DragDrop"]));
             }
-            set {
+            set
+            {
                 this["DragDrop"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ArrowKeys {
-            get {
+        public bool ArrowKeys
+        {
+            get
+            {
                 return ((bool)(this["ArrowKeys"]));
             }
-            set {
+            set
+            {
                 this["ArrowKeys"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AutoStart {
-            get {
+        public bool AutoStart
+        {
+            get
+            {
                 return ((bool)(this["AutoStart"]));
             }
-            set {
+            set
+            {
                 this["AutoStart"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AutoSizeWindow {
-            get {
+        public bool AutoSizeWindow
+        {
+            get
+            {
                 return ((bool)(this["AutoSizeWindow"]));
             }
-            set {
+            set
+            {
                 this["AutoSizeWindow"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowFileTitle {
-            get {
+        public bool ShowFileTitle
+        {
+            get
+            {
                 return ((bool)(this["ShowFileTitle"]));
             }
-            set {
+            set
+            {
                 this["ShowFileTitle"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool WindowDragging {
-            get {
+        public bool WindowDragging
+        {
+            get
+            {
                 return ((bool)(this["WindowDragging"]));
             }
-            set {
+            set
+            {
                 this["WindowDragging"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool StatusBar {
-            get {
+        public bool StatusBar
+        {
+            get
+            {
                 return ((bool)(this["StatusBar"]));
             }
-            set {
+            set
+            {
                 this["StatusBar"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double WindowOpacity {
-            get {
+        public double WindowOpacity
+        {
+            get
+            {
                 return ((double)(this["WindowOpacity"]));
             }
-            set {
+            set
+            {
                 this["WindowOpacity"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public double WindowResizeBorder {
-            get {
+        public double WindowResizeBorder
+        {
+            get
+            {
                 return ((double)(this["WindowResizeBorder"]));
             }
-            set {
+            set
+            {
                 this["WindowResizeBorder"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Topmost {
-            get {
+        public bool Topmost
+        {
+            get
+            {
                 return ((bool)(this["Topmost"]));
             }
-            set {
+            set
+            {
                 this["Topmost"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int CustomRepeatBehaviour {
-            get {
+        public int CustomRepeatBehaviour
+        {
+            get
+            {
                 return ((int)(this["CustomRepeatBehaviour"]));
             }
-            set {
+            set
+            {
                 this["CustomRepeatBehaviour"] = value;
             }
         }
