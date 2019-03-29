@@ -51,8 +51,6 @@ namespace AniView.Windows
         {
             try
             {
-                Topmost = Properties.Settings.Default.Topmost;
-
                 if (Properties.Settings.Default.ImageFormat.Equals(ImageFormat.Png))
                 {
                     CboFormat.SelectedIndex = 0;
@@ -194,6 +192,17 @@ namespace AniView.Windows
         }
 
         /// <summary>
+        /// Method that is called when the BorderThickness of the window should change dynamically
+        /// </summary>
+        /// <param name="d">The DependencyObject</param>
+        /// <param name="e">The DependencyPropertyChangedEventArgs</param>
+        private void BorderThickness_OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            long? value = ((IntegerTextBox) d).Value;
+            if (value != null) BorderThickness = new Thickness(value.Value);
+        }
+
+        /// <summary>
         /// Method that is called when the Window is closing
         /// </summary>
         /// <param name="sender">The object that called this method</param>
@@ -208,17 +217,6 @@ namespace AniView.Windows
             {
                 MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        /// <summary>
-        /// Method that is called when the BorderThickness of the window should change dynamically
-        /// </summary>
-        /// <param name="d">The DependencyObject</param>
-        /// <param name="e">The DependencyPropertyChangedEventArgs</param>
-        private void BorderThickness_OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            long? value = ((IntegerTextBox) d).Value;
-            if (value != null) BorderThickness = new Thickness(value.Value);
         }
     }
 }

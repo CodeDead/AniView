@@ -8,7 +8,7 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.SettingsWindow"
     mc:Ignorable="d" Width="450" Height="350"
     UseLayoutRounding="True" UseNativeChrome="True"
-    Closing="SettingsWindow_OnClosing"
+    Closing="SettingsWindow_OnClosing" Topmost="{bind:SettingsBinder Topmost}"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -66,7 +66,7 @@
                     </Grid.ColumnDefinitions>
                     
                     <Label Margin="3" Content="Repeat behaviour:"></Label>
-                    <ComboBox x:Name="CboRepeat" Margin="3" Grid.Row="0" Grid.Column="1" SelectedIndex="{bind:SettingsBinder RepeatBehaviourIndex}">
+                    <ComboBox Margin="3" Grid.Row="0" Grid.Column="1" SelectedIndex="{bind:SettingsBinder RepeatBehaviourIndex}">
                         <ComboBoxItem>Infinite</ComboBoxItem>
                         <ComboBoxItem>Only once</ComboBoxItem>
                         <ComboBoxItem>Twice</ComboBoxItem>

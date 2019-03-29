@@ -5,16 +5,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:classes="clr-namespace:AniView.Classes"
     x:Class="AniView.Windows.MainWindow"
     mc:Ignorable="d"
     UseLayoutRounding="True"
     Title="AniView"
     AllowsTransparency="True" UseNativeChrome="True"
     TitleTextAlignment="Center"
-    WindowStartupLocation="CenterScreen"
-    Width="350" Height="250"
+    WindowStartupLocation="CenterScreen" AllowDrop="{classes:SettingsBinder DragDrop}"
+    Width="350" Height="250" Topmost="{classes:SettingsBinder Topmost}"
     Drop="GridMain_OnDrop" KeyDown="GridMain_OnKeyDown"
-    Icon="/AniView;component/Resources/Images/aniview.png">
+    Icon="/AniView;component/Resources/Images/aniview.png" Closing="ChromelessWindow_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -65,7 +66,7 @@
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/monitor.png" />
                     </MenuItem.Icon>
-                    <MenuItem x:Name="MniTopmost" Header="Topmost" IsCheckable="True" Checked="MniTopmost_OnChecked" Unchecked="MniTopmost_OnChecked" />
+                    <MenuItem Header="Topmost" IsCheckable="True" IsChecked="{classes:SettingsBinder Topmost}" />
                     <MenuItem x:Name="MniStatusbar" Header="Statusbar" IsCheckable="True" Checked="MniStatusbar_OnChecked" Unchecked="MniStatusbar_OnChecked" />
                 </MenuItem>
                 <Separator />

@@ -16,14 +16,6 @@ namespace AniView.Classes
         /// <param name="path">The path that can be used to bind</param>
         public SettingsBinder(string path) : base(path)
         {
-            Initialize();
-        }
-
-        /// <summary>
-        /// Initialize the SettingsBinder by applying a binding source and binding mode
-        /// </summary>
-        private void Initialize()
-        {
             Source = Properties.Settings.Default;
             Mode = BindingMode.TwoWay;
         }

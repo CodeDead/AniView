@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -16,7 +15,6 @@ using UpdateManager.Classes;
 using XamlAnimatedGif;
 using Application = System.Windows.Application;
 using DataFormats = System.Windows.DataFormats;
-using DownloadProgressEventArgs = XamlAnimatedGif.DownloadProgressEventArgs;
 using DragEventArgs = System.Windows.DragEventArgs;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.MessageBox;
@@ -138,7 +136,6 @@ namespace AniView.Windows
             try
             {
                 BtnFullScreen.IsChecked = Properties.Settings.Default.FullScreen;
-                AllowDrop = Properties.Settings.Default.DragDrop;
                 _arrowKeysEnabled = Properties.Settings.Default.ArrowKeys;
                 _autoSizeWindow = Properties.Settings.Default.AutoSizeWindow;
                 _showFileTitle = Properties.Settings.Default.ShowFileTitle;
@@ -153,9 +150,6 @@ namespace AniView.Windows
                 {
                     MouseDown -= OnMouseDown;
                 }
-
-                Topmost = Properties.Settings.Default.Topmost;
-                MniTopmost.IsChecked = Topmost;
 
                 MniStatusbar.IsChecked = Properties.Settings.Default.StatusBar;
                 StbInfo.Visibility = MniStatusbar.IsChecked ? Visibility.Visible : Visibility.Collapsed;
@@ -471,26 +465,6 @@ namespace AniView.Windows
         }
 
         /// <summary>
-        /// Method that is called when the Topmost property should change
-        /// </summary>
-        /// <param name="sender">The object that called this method</param>
-        /// <param name="e">The RoutedEventArgs</param>
-        private void MniTopmost_OnChecked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Properties.Settings.Default.Topmost = MniTopmost.IsChecked;
-                Properties.Settings.Default.Save();
-
-                Topmost = MniTopmost.IsChecked;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        /// <summary>
         /// Method that is called when the visibility of the Statusbar should change
         /// </summary>
         /// <param name="sender">The object that called this method</param>
@@ -500,8 +474,6 @@ namespace AniView.Windows
             try
             {
                 Properties.Settings.Default.StatusBar = MniStatusbar.IsChecked;
-                Properties.Settings.Default.Save();
-
                 StbInfo.Visibility = MniStatusbar.IsChecked ? Visibility.Visible : Visibility.Collapsed;
             }
             catch (Exception ex)
@@ -704,6 +676,23 @@ namespace AniView.Windows
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
+        /// Event that is fired when the MainWindow is closing
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The CancelEventArgs</param>
+        private void ChromelessWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

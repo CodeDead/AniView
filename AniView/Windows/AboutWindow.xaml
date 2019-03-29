@@ -3,9 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.AboutWindow"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:classes="clr-namespace:AniView.Classes"
+    x:Class="AniView.Windows.AboutWindow"
     mc:Ignorable="d" AllowsTransparency="True" Width="400" Height="250" TitleTextAlignment="Center"
-    UseLayoutRounding="True" UseNativeChrome="True"
+    UseLayoutRounding="True" UseNativeChrome="True" Topmost="{classes:SettingsBinder Topmost}"
     Title="AniView - About" WindowStartupLocation="CenterScreen" Icon="/AniView;component/aniview.ico">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
