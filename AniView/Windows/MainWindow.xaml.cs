@@ -45,30 +45,6 @@ namespace AniView.Windows
         /// </summary>
         private Animator _animator;
         /// <summary>
-        /// A boolean to indicate whether or not the image playlist should be repeated indefinitely
-        /// </summary>
-        private bool _repeatForever;
-        /// <summary>
-        /// A boolean to indicate whether the operation has been completed
-        /// </summary>
-        private bool _completed;
-        /// <summary>
-        /// The repeat behaviour for the XamlAnimatedGif control
-        /// </summary>
-        private RepeatBehavior _repeatBehavior;
-        /// <summary>
-        /// A boolean to indicate whether a download is in progress or not
-        /// </summary>
-        private bool _isDownloading;
-        /// <summary>
-        /// An integer to indicate the current download progress
-        /// </summary>
-        private int _downloadProgress;
-        /// <summary>
-        /// A boolean to indicate whether the download progress is indeterminate or not
-        /// </summary>
-        private bool _isDownloadProgressIndeterminate;
-        /// <summary>
         /// The path of the image that is currently being displayed
         /// </summary>
         private string _currentPath = "";
@@ -76,10 +52,6 @@ namespace AniView.Windows
         /// The UpdateManager that will indicate whether an application update is available or not
         /// </summary>
         private readonly UpdateManager.Classes.UpdateManager _updateManager;
-        /// <summary>
-        /// The Property changed event handler for the XamlAnimatedGif control
-        /// </summary>
-        internal event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region Setting Variables
@@ -99,101 +71,6 @@ namespace AniView.Windows
         /// A boolean to indicate whether the animation behaviour should start automatically
         /// </summary>
         private bool _autoStartAnimation;
-        #endregion
-
-        #region Properties
-        /// <summary>
-        /// A property to indicate whether the image playlist should be repeated indefinitely
-        /// </summary>
-        internal bool RepeatForever
-        {
-            get => _repeatForever;
-            set
-            {
-                _repeatForever = value;
-                OnPropertyChanged("RepeatForever");
-                if (value)
-                {
-                    RepeatBehavior = RepeatBehavior.Forever;
-                }
-            }
-        }
-
-        /// <summary>
-        /// A property to indicate whether the operation has completed or not
-        /// </summary>
-        internal bool Completed
-        {
-            get => _completed;
-            set
-            {
-                _completed = value;
-                OnPropertyChanged("Completed");
-            }
-        }
-
-        /// <summary>
-        /// A property that indicates the current repeat behaviour
-        /// </summary>
-        internal RepeatBehavior RepeatBehavior
-        {
-            get => _repeatBehavior;
-            set
-            {
-                _repeatBehavior = value;
-                OnPropertyChanged("RepeatBehavior");
-                Completed = false;
-            }
-        }
-
-        /// <summary>
-        /// A property to indicate whether a download operation is currently being executed or not
-        /// </summary>
-        internal bool IsDownloading
-        {
-            get => _isDownloading;
-            set
-            {
-                _isDownloading = value;
-                OnPropertyChanged("IsDownloading");
-            }
-        }
-
-        /// <summary>
-        /// A property to indicate the current download progress
-        /// </summary>
-        internal int DownloadProgress
-        {
-            get => _downloadProgress;
-            set
-            {
-                _downloadProgress = value;
-                OnPropertyChanged("DownloadProgress");
-            }
-        }
-
-        /// <summary>
-        /// A property to indicate whether the download progress is indeterminate or not
-        /// </summary>
-        internal bool IsDownloadProgressIndeterminate
-        {
-            get => _isDownloadProgressIndeterminate;
-            set
-            {
-                _isDownloadProgressIndeterminate = value;
-                OnPropertyChanged("IsDownloadProgressIndeterminate");
-            }
-        }
-
-        /// <summary>
-        /// This method will be called when a property has changed
-        /// </summary>
-        /// <param name="propertyName">The name of the property that has changed</param>
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         #endregion
 
         /// <inheritdoc />
@@ -503,31 +380,8 @@ namespace AniView.Windows
         /// <param name="e">The event arguments</param>
         private void AnimationCompleted(object sender, EventArgs e)
         {
-            if (!RepeatForever)
-            {
-                _animator.Pause();
-                ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/play.png", UriKind.Relative));
-            }
-            Completed = true;
-        }
-
-        /// <summary>
-        /// This method will be called when the progress of a download operation has changed
-        /// </summary>
-        /// <param name="d">The dependency object</param>
-        /// <param name="e">The download progress event arguments</param>
-        private void AnimationBehavior_OnDownloadProgress(DependencyObject d, DownloadProgressEventArgs e)
-        {
-            IsDownloading = true;
-            if (e.Progress >= 0)
-            {
-                DownloadProgress = e.Progress;
-                IsDownloadProgressIndeterminate = false;
-            }
-            else
-            {
-                IsDownloadProgressIndeterminate = true;
-            }
+            _animator.Rewind();
+            ImgPause.Source = new BitmapImage(new Uri("/AniView;component/Resources/Images/play.png", UriKind.Relative));
         }
 
         /// <summary>
@@ -568,11 +422,6 @@ namespace AniView.Windows
         {
             PgbLoading.Visibility = Visibility.Collapsed;
             ImgView.Visibility = Visibility.Collapsed;
-
-            if (e.Kind == AnimationErrorKind.Loading)
-            {
-                IsDownloading = false;
-            }
 
             MessageBox.Show($"An error occurred ({e.Kind}): {e.Exception}", "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
         }

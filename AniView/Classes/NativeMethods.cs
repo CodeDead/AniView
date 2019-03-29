@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 namespace AniView.Classes
 {
     /// <summary>
-    /// This class contains external native methods
+    /// Internal static class that contains external native methods
     /// </summary>
     [SuppressMessage("ReSharper", "IdentifierTypo")]
-    internal class NativeMethods
+    internal static class NativeMethods
     {
         /// <summary>
         /// Performs an operation on a specified file

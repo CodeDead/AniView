@@ -129,8 +129,7 @@
             </Grid.RowDefinitions>
             <Image Visibility="Collapsed" x:Name="ImgView" Margin="5" Stretch="None"
                    gif:AnimationBehavior.Loaded="AnimationBehavior_OnLoaded"
-                   gif:AnimationBehavior.Error="AnimationBehavior_OnError"
-                   gif:AnimationBehavior.DownloadProgress="AnimationBehavior_OnDownloadProgress" />
+                   gif:AnimationBehavior.Error="AnimationBehavior_OnError" />
             <ProgressBar Grid.Row="1" Margin="5" x:Name="PgbLoading" MinHeight="25" Visibility="Collapsed" IsIndeterminate="True" Value="1" />
         </Grid>
         <Grid Grid.Row="2">
