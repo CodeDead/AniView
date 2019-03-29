@@ -140,6 +140,9 @@ namespace AniView.Windows
                 _autoSizeWindow = Properties.Settings.Default.AutoSizeWindow;
                 _showFileTitle = Properties.Settings.Default.ShowFileTitle;
 
+                if (!_showFileTitle) Title = "AniView";
+                if (_showFileTitle && !string.IsNullOrEmpty(_currentPath)) Title = "AniView - " + _currentPath;
+
                 if (Properties.Settings.Default.WindowDragging)
                 {
                     // Prevent duplicate handlers
