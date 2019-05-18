@@ -25,11 +25,12 @@ namespace AniView.Classes
             {
                 using (Image img = Image.FromFile(path))
                 {
-                    Image[] frames = GetFrames(img);
                     string ext = FileExtensionFromEncoder(format);
+                    Image[] frames = GetFrames(img);
                     for (int i = 0; i < frames.Length; i++)
                     {
                         frames[i].Save(savePath + "\\" + i + ext, format);
+                        frames[i].Dispose();
                     }
                 }
             });
@@ -85,14 +86,16 @@ namespace AniView.Classes
         {
             try
             {
-                Image img = Image.FromFile(path);
-                return img.GetFrameCount(FrameDimension.Time);
+                using (Image img = Image.FromFile(path))
+                {
+                    return img.GetFrameCount(FrameDimension.Time);
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            return -1;
+            return 0;
         }
     }
 }

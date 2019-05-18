@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using AniView.Classes;
-using UpdateManager.Classes;
+using CodeDead.UpdateManager.Classes;
 using XamlAnimatedGif;
 using Application = System.Windows.Application;
 using DataFormats = System.Windows.DataFormats;
@@ -31,6 +31,10 @@ namespace AniView.Windows
     {
         #region Local Variables
         /// <summary>
+        /// A boolean to indicate whether frames are being extracted or not
+        /// </summary>
+        private bool _extractingFrames;
+        /// <summary>
         /// A list of obtained paths that lead to displayable images
         /// </summary>
         private List<string> _images = new List<string>();
@@ -49,7 +53,7 @@ namespace AniView.Windows
         /// <summary>
         /// The UpdateManager that will indicate whether an application update is available or not
         /// </summary>
-        private readonly UpdateManager.Classes.UpdateManager _updateManager;
+        private readonly UpdateManager _updateManager;
         #endregion
 
         #region Setting Variables
@@ -84,9 +88,9 @@ namespace AniView.Windows
                 InformationButtonText = "Information",
                 NoNewVersionText = "You are running the latest version!",
                 TitleText = "AniView",
-                UpdateNowText = "Would you like to update the application now?"
+                UpdateNowText = "Would you like to update AniView now?"
             };
-            _updateManager = new UpdateManager.Classes.UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables);
+            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables);
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -575,13 +579,17 @@ namespace AniView.Windows
         {
             if (_currentPath.Length == 0) return;
             if (!File.Exists(_currentPath)) return;
+            if (_extractingFrames) return;
 
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+
             try
             {
+                _extractingFrames = true;
                 await ImageUtils.ExtractFrames(_currentPath, fbd.SelectedPath, Properties.Settings.Default.ImageFormat);
                 MessageBox.Show("All frames have been extracted!", "AniView", MessageBoxButton.OK, MessageBoxImage.Information);
+                _extractingFrames = false;
             }
             catch (Exception ex)
             {

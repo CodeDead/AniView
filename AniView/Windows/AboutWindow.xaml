@@ -30,9 +30,9 @@ Images:<LineBreak />
  * icons8 (https://icons8.com)<LineBreak/>
 Theme: Syncfusion<LineBreak />
 Gif control: XamlAnimatedGif<LineBreak />
-Version: 1.5.2.0<LineBreak />
+Version: 1.5.3.0<LineBreak />
 <LineBreak />
-Copyright © CodeDead 2019
+Copyright © 2019 CodeDead
             </TextBlock>
         </Grid>
         <Grid Grid.Row="1">
