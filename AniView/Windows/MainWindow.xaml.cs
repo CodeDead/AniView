@@ -90,7 +90,7 @@ namespace AniView.Windows
                 TitleText = "AniView",
                 UpdateNowText = "Would you like to update AniView now?"
             };
-            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables);
+            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables, DataType.Xml);
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -688,6 +688,16 @@ namespace AniView.Windows
             {
                 MessageBox.Show(this, ex.Message, "AniView", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        /// <summary>
+        /// Method that is called when the statusbar should be hidden
+        /// </summary>
+        /// <param name="sender">The object that called this method</param>
+        /// <param name="e">The RoutedEventArgs</param>
+        private void HideStatusbarMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            MniStatusbar.IsChecked = false;
         }
 
         /// <summary>

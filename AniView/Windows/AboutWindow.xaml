@@ -6,7 +6,7 @@
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:classes="clr-namespace:AniView.Classes"
     x:Class="AniView.Windows.AboutWindow"
-    mc:Ignorable="d" AllowsTransparency="True" Width="400" Height="250" TitleTextAlignment="Center"
+    mc:Ignorable="d" AllowsTransparency="True" Width="380" Height="240" TitleTextAlignment="Center"
     UseLayoutRounding="True" UseNativeChrome="True" Topmost="{classes:SettingsBinder Topmost}"
     Title="AniView - About" WindowStartupLocation="CenterScreen" Icon="/AniView;component/aniview.ico">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -25,12 +25,12 @@
             <TextBlock Grid.Column="2">
 AniView was created by DeadLine.<LineBreak />
 <LineBreak />
-Images:<LineBreak />
+<Bold>Images:</Bold><LineBreak />
  * small-n-flat by paomedia<LineBreak />
  * icons8 (https://icons8.com)<LineBreak/>
-Theme: Syncfusion<LineBreak />
-Gif control: XamlAnimatedGif<LineBreak />
-Version: 1.5.3.0<LineBreak />
+<Bold>Theme:</Bold> Syncfusion<LineBreak />
+<Bold>Gif control:</Bold> XamlAnimatedGif<LineBreak />
+<Bold>Version:</Bold> 1.5.4.0<LineBreak />
 <LineBreak />
 Copyright © 2019 CodeDead
             </TextBlock>

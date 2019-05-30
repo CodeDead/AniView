@@ -24,7 +24,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Menu>
-            <MenuItem Header="File">
+            <MenuItem Header="_File">
                 <MenuItem Header="Open" Click="BtnOpen_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/open.png" />
@@ -48,14 +48,14 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Edit">
+            <MenuItem Header="_Edit">
                 <MenuItem Header="Edit image" Click="BtnEdit_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/edit.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Tools">
+            <MenuItem Header="_Tools">
                 <MenuItem Header="File properties" Click="BtnProperties_OnClick">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/properties.png" />
@@ -76,7 +76,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Help">
+            <MenuItem Header="_Help">
                 <MenuItem Header="Help" Click="BtnHelp_Click">
                     <MenuItem.Icon>
                         <Image Width="16" Height="16" Source="/AniView;component/Resources/Images/help.png"/>
@@ -157,6 +157,11 @@
             </Grid>
         </Grid>
         <StatusBar x:Name="StbInfo" Grid.Row="3">
+            <StatusBar.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Hide" Click="HideStatusbarMenuItem_OnClick" />
+                </ContextMenu>
+            </StatusBar.ContextMenu>
             <Label x:Name="LblDimensions" Content="" />
             <Separator />
             <Label x:Name="LblSize" Content="" />

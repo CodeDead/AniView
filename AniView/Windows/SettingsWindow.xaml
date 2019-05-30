@@ -6,7 +6,7 @@
     xmlns:bind="clr-namespace:AniView.Classes"
     AllowsTransparency="True" TitleTextAlignment="Center"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="AniView.Windows.SettingsWindow"
-    mc:Ignorable="d" Width="450" Height="350"
+    mc:Ignorable="d" Width="450" Height="320"
     UseLayoutRounding="True" UseNativeChrome="True"
     Closing="SettingsWindow_OnClosing" Topmost="{bind:SettingsBinder Topmost}"
     Title="AniView - Settings" Icon="/AniView;component/aniview.ico" WindowStartupLocation="CenterScreen">
