@@ -207,6 +207,7 @@ namespace AniView.Windows
         {
             if (path == null) return;
             if (!File.Exists(path)) return;
+            if (_currentPath == path) return;
 
             PgbLoading.Visibility = Visibility.Visible;
             ImgView.Visibility = Visibility.Collapsed;
