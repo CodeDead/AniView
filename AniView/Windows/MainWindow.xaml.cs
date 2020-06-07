@@ -472,7 +472,7 @@ namespace AniView.Windows
         }
 
         /// <summary>
-        /// Method that is called when the visibility of the Statusbar should change
+        /// Method that is called when the visibility of the status bar should change
         /// </summary>
         /// <param name="sender">The object that called this method</param>
         /// <param name="e">The RoutedEventArgs</param>
@@ -691,7 +691,7 @@ namespace AniView.Windows
         }
 
         /// <summary>
-        /// Method that is called when the statusbar should be hidden
+        /// Method that is called when the status bar should be hidden
         /// </summary>
         /// <param name="sender">The object that called this method</param>
         /// <param name="e">The RoutedEventArgs</param>
