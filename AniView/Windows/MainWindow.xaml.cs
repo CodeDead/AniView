@@ -90,7 +90,7 @@ namespace AniView.Windows
                 TitleText = "AniView",
                 UpdateNowText = "Would you like to update AniView now?"
             };
-            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables, DataType.Xml);
+            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.json", stringVariables, DataType.Json);
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -647,10 +647,10 @@ namespace AniView.Windows
         /// </summary>
         /// <param name="sender">The object that has initialized the method</param>
         /// <param name="e">The key event arguments</param>
-        [SuppressMessage("ReSharper", "SwitchStatementMissingSomeCases")]
         private void GridMain_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (!_arrowKeysEnabled) return;
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
             switch (e.Key)
             {
                 case Key.Left:

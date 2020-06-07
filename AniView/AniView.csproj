@@ -48,6 +48,7 @@
   <ItemGroup>
     <Reference Include="CodeDead.UpdateManager, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CodeDead.UpdateManager.1.5.0\lib\net48\CodeDead.UpdateManager.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Syncfusion.Licensing, Version=18.1460.0.55, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Licensing.18.1.0.55\lib\net46\Syncfusion.Licensing.dll</HintPath>
