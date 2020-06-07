@@ -49,14 +49,14 @@
     <Reference Include="CodeDead.UpdateManager, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CodeDead.UpdateManager.1.5.0\lib\net48\CodeDead.UpdateManager.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Licensing, Version=17.1460.0.49, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.Licensing.17.1.0.49\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    <Reference Include="Syncfusion.Licensing, Version=18.1460.0.55, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.18.1.0.55\lib\net46\Syncfusion.Licensing.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Shared.WPF, Version=17.1460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.Shared.WPF.17.1.0.49\lib\net46\Syncfusion.Shared.WPF.dll</HintPath>
+    <Reference Include="Syncfusion.Shared.WPF, Version=18.1460.0.55, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Shared.WPF.18.1.0.55\lib\net46\Syncfusion.Shared.WPF.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Tools.WPF, Version=17.1460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.Tools.WPF.17.1.0.49\lib\net46\Syncfusion.Tools.WPF.dll</HintPath>
+    <Reference Include="Syncfusion.Tools.WPF, Version=18.1460.0.55, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Tools.WPF.18.1.0.55\lib\net46\Syncfusion.Tools.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -69,8 +69,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="XamlAnimatedGif, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlAnimatedGif.1.2.1\lib\net45\XamlAnimatedGif.dll</HintPath>
+    <Reference Include="XamlAnimatedGif, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XamlAnimatedGif.1.2.2\lib\net45\XamlAnimatedGif.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
