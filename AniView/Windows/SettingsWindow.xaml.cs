@@ -109,6 +109,8 @@ namespace AniView.Windows
         /// <param name="e">The routed event arguments</param>
         private void BtnReset_OnClick(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to reset all settings?", "AniView", MessageBoxButton.YesNo);
+            if (result != MessageBoxResult.Yes) return;
             try
             {
                 Properties.Settings.Default.Reset();
@@ -198,7 +200,7 @@ namespace AniView.Windows
         /// <param name="e">The DependencyPropertyChangedEventArgs</param>
         private void BorderThickness_OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            long? value = ((IntegerTextBox) d).Value;
+            long? value = ((IntegerTextBox)d).Value;
             if (value != null) BorderThickness = new Thickness(value.Value);
         }
 
