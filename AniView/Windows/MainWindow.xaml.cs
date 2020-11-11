@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -90,7 +89,7 @@ namespace AniView.Windows
                 TitleText = "AniView",
                 UpdateNowText = "Would you like to update AniView now?"
             };
-            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.xml", stringVariables, DataType.Xml);
+            _updateManager = new UpdateManager(Assembly.GetExecutingAssembly().GetName().Version, "https://codedead.com/Software/AniView/update.json", stringVariables, DataType.Json);
 
             InitializeComponent();
             ChangeVisualStyle();
@@ -207,6 +206,7 @@ namespace AniView.Windows
         {
             if (path == null) return;
             if (!File.Exists(path)) return;
+            if (_currentPath == path) return;
 
             PgbLoading.Visibility = Visibility.Visible;
             ImgView.Visibility = Visibility.Collapsed;
@@ -472,7 +472,7 @@ namespace AniView.Windows
         }
 
         /// <summary>
-        /// Method that is called when the visibility of the Statusbar should change
+        /// Method that is called when the visibility of the status bar should change
         /// </summary>
         /// <param name="sender">The object that called this method</param>
         /// <param name="e">The RoutedEventArgs</param>
@@ -646,10 +646,10 @@ namespace AniView.Windows
         /// </summary>
         /// <param name="sender">The object that has initialized the method</param>
         /// <param name="e">The key event arguments</param>
-        [SuppressMessage("ReSharper", "SwitchStatementMissingSomeCases")]
         private void GridMain_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (!_arrowKeysEnabled) return;
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
             switch (e.Key)
             {
                 case Key.Left:
@@ -691,7 +691,7 @@ namespace AniView.Windows
         }
 
         /// <summary>
-        /// Method that is called when the statusbar should be hidden
+        /// Method that is called when the status bar should be hidden
         /// </summary>
         /// <param name="sender">The object that called this method</param>
         /// <param name="e">The RoutedEventArgs</param>
